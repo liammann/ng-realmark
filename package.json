@@ -1,0 +1,42 @@
+{
+  "name": "ng2-realmark",
+  "version": "1.0.0",
+  "description": "Real-time Markdown (w/ code highlighting) angular2 ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liammann/ng2-realmark.git"
+  },
+  "keywords": [
+    "angular2",
+    "markdown",
+    "code highlighting"
+  ],
+  "author": "Liam Mann",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liammann/ng2-realmark/issues"
+  },
+  "homepage": "https://github.com/liammann/ng2-realmark#readme",
+  "dependencies": {
+    "@angular/core": "^2.1.0",
+    "angular2": "^2.0.0-beta.21",
+    "es6-shim": "^0.35.0",
+    "prismjs": "^1.6.0",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.1",
+    "showdown": "^1.5.0",
+    "zone.js": "^0.6.12"
+  },
+  "devDependencies": {
+    "@types/es6-collections": "^0.5.29",
+    "@types/es6-promise": "0.0.32",
+    "@types/prismjs": "^1.4.18",
+    "@types/showdown": "^1.4.31",
+    "typescript": "^2.1.5"
+  }
+}
