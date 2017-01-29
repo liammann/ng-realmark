@@ -9,7 +9,7 @@
         "declaration": true
     },
     "files": [
-        "./src/ng2-realmark.ts"
+        "./ng2-realmark.ts"
     ],
     "exclude": [
         "node_modules"

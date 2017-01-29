@@ -1,45 +1,9 @@
-#################
-## Misc
-#################
-**/.DS_Store
-nbproject
-manifest.mf
-build.xml
-node_modules/*
+# Node generated files
+node_modules
 npm-debug.log
-coverage
-*.js
-!karma.conf.js
-!karma-test-shim.js
-*.map
-*.d.ts
-!make.js
-!bundles/*.js
-typings
-
-#################
-## JetBrains
-#################
-.idea
-.project
-.settings
-.idea/*
-*.iml
-
-############
-## Windows
-############
-
-# Windows image file caches
+# OS generated files
 Thumbs.db
-
-# Folder config file
-Desktop.ini
-
-############
-## Mac
-############
-
-# Mac crap
 .DS_Store
-
+# Ignored files
+*.ts
+!*.d.ts

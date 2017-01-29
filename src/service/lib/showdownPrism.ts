@@ -4,6 +4,7 @@
 
 import 'prismjs';
 
+
 export function showdownPrism(){
     'use strict';
 
@@ -49,7 +50,7 @@ export function showdownPrism(){
                 // highlight the code with prism
                 // get the grammar (language supported by prism)
                 var grammar : any = Prism.languages[language];
-                
+                console.warn(Prism.languages, language);
                 if (!grammar) {
                     // the given class name is not a language supported by prism
                     // skip to the next code block
