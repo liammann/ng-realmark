@@ -5,7 +5,7 @@ Markdown module for angular2 with real-time code highlighting provided by prismj
 Step 1: Add module to project through npm
 `npm install ng2-realmark --save`
 
-Step 2: Refeence in main NgModule
+Step 2: Reference in main NgModule
 ```
 import {RealMarkModule} from "ng2-realmark/ng2-realmark";
 
