@@ -15,7 +15,7 @@ import {RealMarkModule} from "ng2-realmark/ng2-realmark";
     RealMarkModule ...
 ```
 
-Step 3: Add to element w/ automatic code block wrapping `\`\`\`js` 
+Step 3: Add to element w/ automatic code block wrapping ```js 
 ```
 <div RealMark [code]="'js'" [markdowninput]="input.text"></div>
 ```
