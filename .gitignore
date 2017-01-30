@@ -38,3 +38,5 @@ Thumbs.db
 *.js
 *.map
 *.d.ts
+
+!/docs/*.js
