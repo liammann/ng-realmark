@@ -40,3 +40,4 @@ Thumbs.db
 *.d.ts
 
 !/docs/*.js
+!/docs/*.map
