@@ -9,6 +9,7 @@ import {NgModule} from '@angular/core';
 @NgModule({
     imports: [BrowserModule],
     declarations: [RealMarkDirective],
-    exports: [RealMarkDirective]
+    exports: [RealMarkDirective],
+    providers: [RealMarkService]
 })
 export class RealMarkModule {}

@@ -1,6 +1,6 @@
 {
   "name": "ng2-realmark",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Real-time Markdown (w/ code highlighting) angular2 ",
   "main": "index.js",
   "scripts": {
