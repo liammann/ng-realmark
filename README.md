@@ -21,4 +21,5 @@ Step 3: Add to element w/ automatic code block wrapping ```js
 ```
 
 Step 4: Add prismjs stylesheet to style.css
+
 `@import url('https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css');`
