@@ -3,7 +3,7 @@
 	[
 		{
 			"path": ".",
-						"file_exclude_patterns": ["*.js.map", "src/**/*.js", "*.d.ts"]
+			"file_exclude_patterns": ["*.js.map", "src/**/*.js", "*.d.ts"]
 
 		}
 	]

@@ -2,7 +2,7 @@
 //
 // Uses the Prism syntax highlighter to highlight code blocks.
 
-import 'prismjs';
+import * as Prism from 'prismjs';
 
 import 'prismjs/components/prism-c';
 import 'prismjs/components/prism-css';

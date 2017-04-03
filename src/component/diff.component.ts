@@ -20,12 +20,13 @@ export class DiffComponent {
   @Input() content: any; 
   @Input() original: any; 
   @Input() codeBlock: string; 
+
   showDeleted : boolean = true;
   showRaw : boolean = false;
-  showDeletedText:string = "Show Deleted";
+  showDeletedText:string = "Hide Deleted";
   showRawText:string = "Show Raw";
-  previousHtml: string;
-  @Input() contentType: string; 
+  previousContent: string;
+
   @ViewChild('contentWrapper') contentWrapper: ElementRef;
 
   constructor(private elRef: ElementRef, private realMarkService: RealMarkService) {
@@ -57,17 +58,13 @@ export class DiffComponent {
 	}
 
   ngDoCheck() {
-    if(!(this.content === this.previousHtml)) {
+    if(this.content !== this.previousContent){
         this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted, this.showRaw).then(resp => this.updateDom(resp));
     }
   }
   updateDom(innerHTML: string){
-    let inputMarkdown = innerHTML;
-   	if(this.codeBlock){
-      inputMarkdown = "```"+this.codeBlock+"\n"+inputMarkdown+"\n```";
-    }
     this.ele.innerHTML = innerHTML;
-    this.previousHtml = this.content;
+    this.previousContent = this.content;
   }
 
 
