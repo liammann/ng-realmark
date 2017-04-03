@@ -4,10 +4,7 @@
 
 import 'prismjs';
 
-import 'prismjs/components/prism-c';
-import 'prismjs/components/prism-css';
-import 'prismjs/components/prism-markdown';
-import 'prismjs/components/prism-php';
+{{prismjsImports}}
 
 
 export function showdownPrism(){
