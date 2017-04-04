@@ -1,13 +1,13 @@
-# ng2-realmark
-Markdown module for angular2 with real-time code highlighting provided by prismjs and showdown. 
+# ng-realmark
+Markdown module for Angular with real-time code highlighting provided by Prismjs and Showdown. 
 
 ## Usage
 Step 1: Add module to project through npm
-`npm install ng2-realmark --save`
+`npm install ng-realmark --save`
 
 Step 2: Reference in main NgModule
 ```
-import {RealMarkModule} from "ng2-realmark/ng2-realmark";
+import {RealMarkModule} from "ng-realmark/ng-realmark";
 
 @NgModule({
   imports: [
