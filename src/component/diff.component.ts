@@ -6,7 +6,7 @@ import { RealMarkService } from '../service/realmark.service';
   template: `
     <header>
       <button (click)="deletedClick()">{{showDeletedText}}</button>
-      <button (click)="rawClick()">{{showRawText}}</button>
+      <button *ngIf="!codeBlock" (click)="rawClick()">{{showRawText}}</button>
       <p><ng-content></ng-content></p>
     </header>
     <div #contentWrapper></div>
@@ -38,7 +38,7 @@ export class DiffComponent {
       this.showDeleted = true;
       this.showDeletedText = "Hide Deleted";
     }
-    this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted, this.showRaw).then(resp => this.updateDom(resp));
+    this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted, this.showRaw, this.codeBlock).then(resp => this.updateDom(resp));
   }
   rawClick (){
     if(this.showRaw){
@@ -48,16 +48,17 @@ export class DiffComponent {
       this.showRaw = true;
       this.showRawText = "Hide Markdown";
     }
-    this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted, this.showRaw).then(resp => this.updateDom(resp));
+    this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted, this.showRaw, this.codeBlock).then(resp => this.updateDom(resp));
   }
 	ngOnInit () {
       this.ele = this.contentWrapper.nativeElement;
-      this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted,this.showRaw).then(resp => this.updateDom(resp));
+      this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted,this.showRaw, this.codeBlock).then(resp => this.updateDom(resp));
+    console.log(this.codeBlock);
 	}
 
   ngDoCheck() {
     if(this.content !== this.previousContent){
-        this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted, this.showRaw).then(resp => this.updateDom(resp));
+        this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted, this.showRaw, this.codeBlock).then(resp => this.updateDom(resp));
     }
   }
   updateDom(innerHTML: string){

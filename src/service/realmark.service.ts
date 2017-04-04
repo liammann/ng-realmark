@@ -8,9 +8,10 @@ import {showdownPrism} from './lib/showdownPrism';
 
 @Injectable()
 export class RealMarkService {
-    count=0;
-    constructor() {
-    }
+    private codeBlock: string;
+
+    constructor() {}
+
     addDatabaseData(test:any){
       console.log(test);
     }
@@ -34,9 +35,9 @@ export class RealMarkService {
  
 
 
-  compareMarkdown(content : string, original: string, showDeleted: boolean, raw: boolean): Promise<any>{
+  compareMarkdown(content : string, original: string, showDeleted: boolean, raw: boolean, codeBlock: string ): Promise<any>{
     let returnOut = [];
-
+    this.codeBlock = codeBlock;
     if(original !== content){
       if(!content && !original){
         console.error("undefined");
@@ -122,8 +123,12 @@ export class RealMarkService {
     if(!text){
     return  "<div data-lineNum1='"+num1+"' data-lineNum2='"+num2+"'   class='diff-"+type+"'></div>";
     }
-    if(!raw){
+    if(!raw && !this.codeBlock){
       return  "<div data-lineNum1='"+num1+"' data-lineNum2='"+num2+"' class='diff-"+type+"'>"+this.markdownRegex(text)+" </div>";
+    }else if(this.codeBlock){
+
+        return  "<div data-lineNum1='"+num1+"' data-lineNum2='"+num2+"' class='diff-"+type+"'>"+this.process("```"+this.codeBlock+"\n"+text+"\n```")+"</div>";
+
     }
     return  "<div data-lineNum1='"+num1+"' data-lineNum2='"+num2+"'   class='diff-"+type+"'>"+text+" </div>";
 

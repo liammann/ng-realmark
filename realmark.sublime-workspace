@@ -523,16 +523,16 @@
 			"file": "package.json",
 			"settings":
 			{
-				"buffer_size": 1175,
+				"buffer_size": 1967,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "ng2-realmark.ts",
+			"file": "dist/readme.md",
 			"settings":
 			{
-				"buffer_size": 465,
+				"buffer_size": 635,
 				"line_ending": "Unix"
 			}
 		}
@@ -602,13 +602,51 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/liammann/Desktop/ng2-realmark",
-		"/Users/liammann/Desktop/ng2-realmark/src",
-		"/Users/liammann/Desktop/ng2-realmark/src/directive",
-		"/Users/liammann/Desktop/ng2-realmark/src/service"
+		"/Users/liammann/Documents/GitHub/ng2-realmark",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/dist",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/dist/src/component",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/dist/src/directive",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/node_modules/@angular",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/node_modules/@angular/core",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/node_modules/rollup-plugin-inject",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/node_modules/rollup-plugin-inject/dist",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/src",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/src/component",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/src/service/lib"
 	],
 	"file_history":
 	[
+		"/Users/liammann/Documents/GitHub/ng2-realmark/ng-realmark.ts",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/index.ts",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/.npmignore",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/dist/ng-realmark.js",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/package-dist.json",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/README.md",
+		"/Users/liammann/Documents/Test/readme.md",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/ng2-realmark.ts",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/dist/package.json",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/dist/ng-realmark.metadata.json",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/dist/package-dist.json",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/src/component/previewer.component.ts",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/src/component/diff.component.ts",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/.gitignore",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/src/service/realmark.service.ts",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/package.json",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/rollup.config.js",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/tsconfig.json",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/src/package-dist.json",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/ng-realmark.ngsummary.json",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/src/component/previewer.component.scss",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/src/component/diff.component.scss",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/ng-realmark.scss",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/src/service/lib/showdownPrism.ts",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/src/component/previewer.component.html",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/node_modules/rollup-plugin-inject/package.json",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/node_modules/rollup-plugin-inject/dist/rollup-plugin-inject.cjs.js",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/node_modules/rollup-plugin-inject/dist/rollup-plugin-inject.es6.js",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/index.ngsummary.json",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/dist/index.js",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/dist/ng2-realmark.d.ts",
 		"/Users/liammann/Desktop/ng2-realmark/ng2-realmark.js",
 		"/Users/liammann/Desktop/ng2-realmark/src/directive/realmark.directive.d.ts",
 		"/Users/liammann/Desktop/ng2-realmark/package.json",
@@ -705,38 +743,7 @@
 		"/Users/liammann/Desktop/moodleconsole/src/app/academy/academy-detail.component.ts",
 		"/Users/liammann/Desktop/moodleconsole/src/app/app.routing.ts",
 		"/Users/liammann/Desktop/moodleconsole/src/app/app.module.ts",
-		"/Users/liammann/Desktop/moodleconsole/src/app/app.component.html",
-		"/Users/liammann/Desktop/moodleconsole/src/app/services/group.service.ts",
-		"/Users/liammann/Desktop/moodleconsole/src/app/services/academy.service.ts",
-		"/Users/liammann/Desktop/moodleconsole/src/app/academy/academy.component.html",
-		"/Users/liammann/Desktop/moodleconsole/src/app/auth/auth.service.ts",
-		"/Users/liammann/Desktop/moodleconsole/src/app/app.component.ts",
-		"/Users/liammann/Desktop/moodleconsole/src/app/admin/admin.component.ts",
-		"/Users/liammann/Desktop/moodleconsole/src/app/dashboard/index.component.ts",
-		"/Users/liammann/Desktop/moodleconsole/src/app/login/login.component.ts",
-		"/Users/liammann/Desktop/moodleconsole/src/app/login/login.component.html",
-		"/Users/liammann/Desktop/moodleconsole/src/app/auth/auth-guard.ts",
-		"/Users/liammann/Desktop/moodleconsole/src/app/app.component.scss",
-		"/Users/liammann/Desktop/moodleconsole/src/app/dashboard/index.component.scss",
-		"/Users/liammann/Dropbox/mongodb/README",
-		"/Users/liammann/tomthing/PHPAPP/src/app/type/article.ts",
-		"/Users/liammann/tomthing/PHPAPP/src/app/pages/contribute/article/con-article-edit.component.ts",
-		"/Users/liammann/tomthing/PHPAPP/src/app/css/section-overview.scss",
-		"/Users/liammann/tomthing/PHPAPP/src/app/pages/article/articles.component.html",
-		"/Users/liammann/tomthing/PHPAPP/src/app/pages/article/articles.component.ts",
-		"/Users/liammann/tomthing/PHPAPP/src/app/pages/contribute/doc/con-doc-edit.component.html",
-		"/Users/liammann/tomthing/PHPAPP/src/app/pages/contribute/article/con-article-edit.component.html",
-		"/Users/liammann/tomthing/PHPAPP/src/app/ut/markdown/showdownPrism.ts",
-		"/Users/liammann/tomthing/PHPAPP/node_modules/prismjs/prism.js",
-		"/Users/liammann/tomthing/PHPAPP/node_modules/prismjs/components/prism-c.js",
-		"/Users/liammann/tomthing/PHPAPP/node_modules/prismjs/examples.js",
-		"/Users/liammann/studypilot/test1/package.json",
-		"/Users/liammann/studypilot/myapp/app.js",
-		"/Users/liammann/studypilot/web01-server/bootstrap.sh",
-		"/Users/liammann/studypilot/web01-server/load.sh",
-		"/Users/liammann/backup-2.15.2017_17-35-03_a00000n9/homedir/mail/sheltonandlines.co.uk/richard/cur/1487157164.M240757P23205.fileserver52p.joomlawired.com,S=13280,W=13472:2,S",
-		"/Users/liammann/backup-2.15.2017_17-35-03_a00000n9/homedir/mail/sheltonandlines.co.uk/richard/cur/1487178681.M802211P22594.fileserver52p.joomlawired.com,S=109810,W=111632:2,RS",
-		"/Users/liammann/backup-2.15.2017_17-35-03_a00000n9/homedir/mail/sheltonandlines.co.uk/richard/cur/1487179133.M157410P24461.fileserver52p.joomlawired.com,S=113342,W=114912:2,"
+		"/Users/liammann/Desktop/moodleconsole/src/app/app.component.html"
 	],
 	"find":
 	{
@@ -1011,7 +1018,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1020,15 +1027,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1175,
+						"buffer_size": 1967,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								868,
-								818
+								818,
+								829
 							]
 						],
 						"settings":
@@ -1041,16 +1048,16 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "ng2-realmark.ts",
+					"file": "dist/readme.md",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 465,
+						"buffer_size": 635,
 						"regions":
 						{
 						},
@@ -1058,18 +1065,18 @@
 						[
 							[
 								0,
-								0
+								635
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1109,6 +1116,10 @@
 	"output.csslint_result_view":
 	{
 		"height": 27.0
+	},
+	"output.doc":
+	{
+		"height": 0.0
 	},
 	"output.find_results":
 	{
@@ -1160,7 +1171,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 285.0,
+	"side_bar_width": 383.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
