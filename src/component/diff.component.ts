@@ -10,9 +10,7 @@ import { RealMarkService } from '../service/realmark.service';
       <p><ng-content></ng-content></p>
     </header>
     <div #contentWrapper></div>
-  `,
-  styleUrls: ['./diff.component.scss']
-
+  `
 
 })
 export class DiffComponent {

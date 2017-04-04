@@ -41,3 +41,6 @@ Thumbs.db
 
 !/docs/*.js
 !/docs/*.map
+
+*.ngfactory.ts
+*.ngsummary.json

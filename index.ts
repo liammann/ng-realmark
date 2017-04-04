@@ -1,0 +1,1 @@
+export { RealMarkModule }   from './ng-realmark';

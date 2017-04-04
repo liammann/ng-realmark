@@ -5,8 +5,8 @@ import { RealMarkService } from '../service/realmark.service';
 
 @Component({
   selector: 'realmark-previewer',
-  templateUrl: './previewer.component.html',
-  styleUrls: ['./previewer.component.scss']
+  template: '',
+  styles: []
 })
 export class PreviewerComponent {
   private ele: any;

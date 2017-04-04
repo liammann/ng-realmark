@@ -3,17 +3,24 @@
   "version": "1.0.2",
   "description": "Real-time Markdown (w/ code highlighting) angular2 ",
   "main": "index.js",
+  "config" : { "update" : "patch" },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublish": "tsc",
-    "bundle": "node tasks/buildPrismjs.js"
-
+    "bundle": "node tasks/buildPrismjs.js",
+    "transpile": "ngc",
+    "copy": "cpx './package-dist.json' dist && renamer --find 'package-dist.json' --replace 'package.json' ./dist/*",
+    "copyRead": "cpx './readme.md' dist",
+    "package": "rollup -c && npm run copy && npm run copyRead",
+    "minify": "uglifyjs dist/bundles/ng-realmark.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/ng-realmark.umd.min.js",
+    "build": "npm run transpile && npm run package && npm run minify",
+    "publish": "cd ./dist && npm version $npm_package_config_update && npm publish"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/liammann/ng2-realmark.git"
+    "url": "git+https://github.com/liammann/ng-realmark.git"
   },
-  "typings": "./ng2-realmark.d.ts",
+  "typings": "./ng-realmark.d.ts",
   "keywords": [
     "angular2",
     "markdown",
@@ -22,27 +29,32 @@
   "author": "Liam Mann",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/liammann/ng2-realmark/issues"
+    "url": "https://github.com/liammann/ng-realmark/issues"
   },
-  "homepage": "https://github.com/liammann/ng2-realmark#readme",
+  "homepage": "https://github.com/liammann/ng-realmark#readme",
   "dependencies": {
-    "@angular/core": "^2.1.0",
-    "angular2": "^2.0.0-beta.21",
+    "@angular/core": "^4.0.1",
     "es6-shim": "^0.35.0",
-    "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.1",
     "prismjs": "^1.6.0",
+    "reflect-metadata": "0.1.2",
     "showdown": "^1.5.0",
-    "zone.js": "^0.6.12"
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
   },
   "devDependencies": {
-    "@angular/common": "^2.4.5",
-    "@angular/platform-browser": "^2.4.5",
-    "@types/es6-collections": "^0.5.29",
-    "@types/es6-promise": "0.0.32",
+    "@angular/common": "^4.0.1",
+    "@angular/compiler": "^4.0.1",
+    "@angular/compiler-cli": "^4.0.1",
     "@types/prismjs": "^1.4.18",
     "@types/showdown": "^1.4.31",
-    "typescript": "^2.1.5",
-    "rimraf": "^2.5.2"
+    "cpx": "^1.5.0",
+    "renamer": "^0.6.1",
+    "rimraf": "^2.5.2",
+    "rollup": "^0.41.6",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-inject": "^2.0.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "typescript": "^2.2.2",
+    "uglify-js": "^2.8.21"
   }
 }
