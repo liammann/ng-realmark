@@ -1,12 +1,10 @@
-import { Component, Input,  OnInit, ElementRef } from '@angular/core';
+import { Component, Input,Injectable,  OnInit, ElementRef } from '@angular/core';
 import { RealMarkService } from '../service/realmark.service';
-
-
 
 @Component({
   selector: 'realmark-previewer',
   template: '',
-  styles: []
+  styles: [],
 })
 export class PreviewerComponent {
   private ele: any;

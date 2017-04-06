@@ -2,7 +2,7 @@
   "name": "ng2-realmark",
   "version": "1.0.2",
   "description": "Real-time Markdown (w/ code highlighting) angular2 ",
-  "main": "index.js",
+  "main": "ng-realmark.js",
   "config" : { "update" : "patch" },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

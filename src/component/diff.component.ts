@@ -11,7 +11,6 @@ import { RealMarkService } from '../service/realmark.service';
     </header>
     <div #contentWrapper></div>
   `
-
 })
 export class DiffComponent {
   private ele: any;

@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"con",
+				"console\tvar"
+			],
+			[
 				"patc",
 				"patchType"
 			],
@@ -90,10 +94,6 @@
 			[
 				"cur",
 				"cursor"
-			],
-			[
-				"con",
-				"console"
 			],
 			[
 				"get",
@@ -520,19 +520,28 @@
 	"buffers":
 	[
 		{
-			"file": "package.json",
+			"file": "src/component/diff.component.ts",
 			"settings":
 			{
-				"buffer_size": 1967,
+				"buffer_size": 2291,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "dist/readme.md",
+			"file": "src/service/realmark.service.ts",
 			"settings":
 			{
-				"buffer_size": 635,
+				"buffer_size": 6550,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/component/previewer.component.ts",
+			"settings":
+			{
+				"buffer_size": 1012,
 				"line_ending": "Unix"
 			}
 		}
@@ -603,19 +612,14 @@
 	"expanded_folders":
 	[
 		"/Users/liammann/Documents/GitHub/ng2-realmark",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/dist",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/dist/src/component",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/dist/src/directive",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/node_modules/@angular",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/node_modules/@angular/core",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/node_modules/rollup-plugin-inject",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/node_modules/rollup-plugin-inject/dist",
 		"/Users/liammann/Documents/GitHub/ng2-realmark/src",
 		"/Users/liammann/Documents/GitHub/ng2-realmark/src/component",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/src/service/lib"
+		"/Users/liammann/Documents/GitHub/ng2-realmark/src/service"
 	],
 	"file_history":
 	[
+		"/Users/liammann/Documents/GitHub/ng2-realmark/dist/readme.md",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/package.json",
 		"/Users/liammann/Documents/GitHub/ng2-realmark/ng-realmark.ts",
 		"/Users/liammann/Documents/GitHub/ng2-realmark/index.ts",
 		"/Users/liammann/Documents/GitHub/ng2-realmark/.npmignore",
@@ -631,7 +635,6 @@
 		"/Users/liammann/Documents/GitHub/ng2-realmark/src/component/diff.component.ts",
 		"/Users/liammann/Documents/GitHub/ng2-realmark/.gitignore",
 		"/Users/liammann/Documents/GitHub/ng2-realmark/src/service/realmark.service.ts",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/package.json",
 		"/Users/liammann/Documents/GitHub/ng2-realmark/rollup.config.js",
 		"/Users/liammann/Documents/GitHub/ng2-realmark/tsconfig.json",
 		"/Users/liammann/Documents/GitHub/ng2-realmark/src/package-dist.json",
@@ -742,8 +745,7 @@
 		"/Users/liammann/studypilot/studypilot-server/controllers/account.js",
 		"/Users/liammann/Desktop/moodleconsole/src/app/academy/academy-detail.component.ts",
 		"/Users/liammann/Desktop/moodleconsole/src/app/app.routing.ts",
-		"/Users/liammann/Desktop/moodleconsole/src/app/app.module.ts",
-		"/Users/liammann/Desktop/moodleconsole/src/app/app.component.html"
+		"/Users/liammann/Desktop/moodleconsole/src/app/app.module.ts"
 	],
 	"find":
 	{
@@ -1018,65 +1020,100 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "package.json",
+					"file": "src/component/diff.component.ts",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1967,
+						"buffer_size": 2291,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								818,
-								829
+								2126,
+								2126
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
 							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": true,
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 280.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/service/realmark.service.ts",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6550,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4703,
+								4703
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"use_tab_stops": false
+						},
+						"translation.x": 238.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/component/previewer.component.ts",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1012,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								307,
+								316
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"use_tab_stops": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "dist/readme.md",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 635,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								635
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
 					"type": "text"
 				}
 			]
