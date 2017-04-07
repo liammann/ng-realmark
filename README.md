@@ -10,6 +10,7 @@ Real-time Markdown module for Angular.io. Code highlighting is provided by [Pris
 
 ## Install (Angular CLI project) 
 Step 1: Add module to project through npm `npm install ng-realmark --save`
+
 Step 2: Reference in main NgModule
 ```
 import {RealMarkModule} from "ng-realmark/ng-realmark";
