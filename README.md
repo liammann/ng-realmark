@@ -1,25 +1,52 @@
-# ng-realmark
-Markdown module for Angular with real-time code highlighting provided by Prismjs and Showdown. 
+# NG-RealMark
+Real-time Markdown module for Angular.io. Code highlighting is provided by [Prismjs](http://prismjs.com/) and [ShowDown](https://github.com/showdownjs/showdown).
 
-## Usage
-Step 1: Add module to project through npm
-`npm install ng-realmark --save`
+> Live example [here](https://liammann.github.io/ng-realmark/)
 
+[![dependencies Status](https://david-dm.org/liammann/ng-realmark/status.svg)](https://david-dm.org/liammann/ng-realmark)
+[![devDependencies Status](https://david-dm.org/liammann/ng-realmark/dev-status.svg)](https://david-dm.org/liammann/ng-realmark?type=dev)
+
+
+
+## Install (Angular CLI project) 
+Step 1: Add module to project through npm `npm install ng-realmark --save`
 Step 2: Reference in main NgModule
 ```
 import {RealMarkModule} from "ng-realmark/ng-realmark";
-
+ 
 @NgModule({
-  imports: [
-    BrowserModule,
-    RealMarkModule ...
+  imports: [ …
+    RealMarkModule …
+	]…
+```
+Step 3: Add stylesheet to `angular.cli`
+
+## Usage 
+### Component 1 - Previewer
+```
+<realmark-previewer [content]="markdownContentVar" > </realmark-previewer>
+```
+Automatic code block wrapping can be achieve be adding the `[codeBlock]=“‘js’”` attribute. E.g. 
+```
+<realmark-previewer [content]="codeContentVar" [codeBlock]="'js'" > </realmark-previewer>
 ```
 
-Step 3: Add to element w/ automatic code block wrapping ```js 
+
+### Component 2 - Diff
 ```
-<div RealMark [code]="'js'" [markdowninput]="input.text"></div>
+<realmark-diff [content]="MarkDownNewContent" [original]="MarkDownOriginalContent">
+	Title to be displayed
+</realmark-diff>
+```
+Automatic code block wrapping can be achieve be adding the `[codeBlock]=“‘js’”` attribute. E.g. 
+```
+<realmark-diff [content]="CodeNewContent" [original]="CodeOriginalContent" [codeBlock]="'js'" >
+	Title to be displayed
+</realmark-diff>
 ```
 
-Step 4: Add prismjs stylesheet to style.css
+## Prerequisites
 
-`@import url('https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css');`
+Please install Node.js and npm if they are not already installed on your computer.
+
+> Verify that you are running at least node v6.x.x and npm 3.x.x by running node -v and npm -v in a terminal / console window. Older versions may produce errors.
