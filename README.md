@@ -21,6 +21,13 @@ import {RealMarkModule} from "ng-realmark/ng-realmark";
 	]…
 ```
 Step 3: Add stylesheet to `angular.cli`
+``` 
+"styles": [
+  ...
+	"../node_modules/ng-realmark/realmark.css"
+  ...
+],
+```
 
 ## Usage 
 ### Component 1 - Previewer
