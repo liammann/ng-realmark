@@ -3,7 +3,9 @@
   "version": "1.0.2",
   "description": "Real-time Markdown (w/ code highlighting) angular2 ",
   "main": "ng-realmark.js",
-  "config" : { "update" : "patch" },
+  "config": {
+    "update": "patch"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublish": "tsc",
@@ -13,8 +15,10 @@
     "copyRead": "cpx './readme.md' dist",
     "package": "rollup -c && npm run copy && npm run copyRead",
     "minify": "uglifyjs dist/bundles/ng-realmark.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/ng-realmark.umd.min.js",
-    "build": "npm run transpile && npm run package && npm run minify",
-    "publish": "cd ./dist && npm version $npm_package_config_update && npm publish"
+    "build": "npm run transpile && npm run package && npm run minify && npm run build-css",
+    "publish": "cd ./dist && npm version $npm_package_config_update && npm publish",
+    "build-css": "node-sass src/style.scss dist/realmark.css"
+
   },
   "repository": {
     "type": "git",
@@ -48,6 +52,7 @@
     "@types/prismjs": "^1.4.18",
     "@types/showdown": "^1.4.31",
     "cpx": "^1.5.0",
+    "node-sass": "^4.5.2",
     "renamer": "^0.6.1",
     "rimraf": "^2.5.2",
     "rollup": "^0.41.6",

@@ -523,16 +523,16 @@
 			"file": "package.json",
 			"settings":
 			{
-				"buffer_size": 1175,
+				"buffer_size": 2089,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "ng2-realmark.ts",
+			"file": "realmark.sublime-project",
 			"settings":
 			{
-				"buffer_size": 465,
+				"buffer_size": 113,
 				"line_ending": "Unix"
 			}
 		}
@@ -609,13 +609,13 @@
 	],
 	"file_history":
 	[
+		"/Users/liammann/Desktop/ng2-realmark/ng2-realmark.ts",
 		"/Users/liammann/Desktop/ng2-realmark/ng2-realmark.js",
 		"/Users/liammann/Desktop/ng2-realmark/src/directive/realmark.directive.d.ts",
 		"/Users/liammann/Desktop/ng2-realmark/package.json",
 		"/Users/liammann/Desktop/ng2-realmark/ng2-realmark.d.ts",
 		"/Users/liammann/Desktop/ng2-realmark/.npmignore",
 		"/Users/liammann/Desktop/ng2-realmark/.gitignore",
-		"/Users/liammann/Desktop/ng2-realmark/ng2-realmark.ts",
 		"/Users/liammann/tomthing/PHPAPP/src/app/css/header.scss",
 		"/Users/liammann/tomthing/PHPAPP/src/app/css/doc-detail.scss",
 		"/Users/liammann/tomthing/PHPAPP/src/app/css/layout.scss",
@@ -1026,15 +1026,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1175,
+						"buffer_size": 2089,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								868,
-								818
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1052,11 +1052,11 @@
 				},
 				{
 					"buffer": 1,
-					"file": "ng2-realmark.ts",
+					"file": "realmark.sublime-project",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 465,
+						"buffer_size": 113,
 						"regions":
 						{
 						},
@@ -1069,7 +1069,7 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

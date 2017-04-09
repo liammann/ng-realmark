@@ -1,0 +1,108 @@
+code[class*=language-],pre[class*=language-]{color:#000;background:0 0;text-shadow:0 1px #fff;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-] ::-moz-selection,code[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection,pre[class*=language-]::-moz-selection{text-shadow:none;background:#b3d4fc}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#a67f59;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.function{color:#DD4A68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}/*# sourceMappingURL=prism.min.css.map */
+
+realmark-diff,
+realmark-privewer {
+	border: 1px solid lightgrey;
+	background-color: rgb(250, 250, 250);
+  font-family: sans-serif;
+  display: block;
+  margin: 1rem 0;
+  font-size: 16px;
+
+	header {
+	    border-bottom: 1px solid lightgrey;
+	    margin:0;
+	    padding: 0;
+	    font-family: sans-serif;
+	    overflow: hidden;
+	    background: white;
+	}
+	header button {
+	    float: right;
+	    background: none;
+	    height: 100%;
+	    padding: 1rem 0.65rem;
+	    font-size: 0.75em ;
+	    border: none;
+	    border-left: 1px solid lightgrey;
+	    background: darken(rgb(250, 250, 250), 5%);
+	    transition: all linear 0.25s;
+	    &:hover {
+	    	background: darken(rgb(250, 250, 250), 15%);
+	    	color: black;
+	    }
+	}
+	header p {
+	    font-size: 1.4em;
+	    padding: 0.65rem 0.75rem 0.5rem 0.75rem;
+	    margin:0;
+	    color: rgb(65, 131, 196);
+	}
+
+
+	.diff-deleted, .diff-added, .diff-line{
+	  background: rgba(240,141,141,0.25);
+	  position: relative;  
+	  display: block;
+    padding: 0.3rem 0;
+    padding-left: 3rem;
+    min-height: 34px;
+
+    * {
+    	margin: 0;
+    	padding: 0;
+    }
+    ul,ol {
+    	margin-left: 1rem;
+    }
+    blockquote {
+    	padding: 0.25rem 0 0.25rem 0.25rem;
+    	border-left: 2px solid lightgrey;
+    }
+	}
+	.diff-added {
+	  background: rgba(141, 240, 141, 0.25);
+	}
+	.diff-line {
+	    background: transparent;
+	}
+	.diff-deleted:after, .diff-added:before , .diff-line:before {
+	  content: attr(data-linenum1) ' ' attr(data-linenum2);
+	  position: absolute;
+	  left: 0;
+	  top: 0;
+	  bottom: 0;
+	  width: 0rem;
+	  text-align: center;
+	  color: white;
+	  border-right: 1px solid lightgrey;
+	  width: 2.5rem;
+	  padding: 0.4rem 0;
+	  font-size: 0.8em;
+	  color: black;
+	  vertical-align: middle;
+	  background: rgba(240,141,141,0.75);
+	}
+	.diff-added:before {
+	  background: rgba(141, 240, 141, 0.75);
+	}
+
+	.diff-line:before {
+	  background: rgb(255,255,255);
+	}
+
+	pre[class*=language-]{
+		margin: 0;
+		padding: 0;
+		background: transparent;
+		code, .token.string, .token.string, .token.entity, .token.operator, .token.url {
+			background: transparent;
+		}
+		code{
+			margin: 0;
+			padding: 0;
+
+		}
+	}
+
+}

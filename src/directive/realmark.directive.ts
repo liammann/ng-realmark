@@ -1,9 +1,11 @@
 import { Directive, Input,  OnInit, ElementRef, Injectable} from '@angular/core';
 import { RealMarkService } from '../service/realmark.service';
 
+/**
+ * @desperate 
+ */
 @Directive({
   selector: '[RealMark]',
-
 })
 export class RealMarkDirective implements OnInit {
   private ele: any;

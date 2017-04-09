@@ -26,9 +26,11 @@ export class DiffComponent {
 
   @ViewChild('contentWrapper') contentWrapper: ElementRef;
 
-  constructor(private elRef: ElementRef, private realMarkService: RealMarkService) {
-    // reference to the DOM element
-  }
+  constructor(private elRef: ElementRef, private realMarkService: RealMarkService) {}
+
+  /**
+   * Changes value of showDeleted and re-evaluate compateMarkdown. Also updates button text. 
+   */
   deletedClick (){
     if(this.showDeleted){
       this.showDeleted = false;
@@ -39,6 +41,10 @@ export class DiffComponent {
     }
     this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted, this.showRaw, this.codeBlock).then(resp => this.updateDom(resp));
   }
+
+  /**
+   * Changes value of showRaw and re-evaluate compateMarkdown. Also updates button text. 
+   */
   rawClick (){
     if(this.showRaw){
       this.showRaw = false;
@@ -49,22 +55,26 @@ export class DiffComponent {
     }
     this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted, this.showRaw, this.codeBlock).then(resp => this.updateDom(resp));
   }
+
+  /**
+   * set element to update and run compareMarkdown().  
+   */
 	ngOnInit () {
-      this.ele = this.contentWrapper.nativeElement;
-      this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted,this.showRaw, this.codeBlock).then(resp => this.updateDom(resp));
-    console.log(this.codeBlock);
+    this.ele = this.contentWrapper.nativeElement;
+    this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted,this.showRaw, this.codeBlock).then(resp => this.updateDom(resp));
 	}
 
+  /**
+   * set element to update and run compareMarkdown().  
+   */
   ngDoCheck() {
     if(this.content !== this.previousContent){
-        this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted, this.showRaw, this.codeBlock).then(resp => this.updateDom(resp));
+      this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted, this.showRaw, this.codeBlock).then(resp => this.updateDom(resp));
     }
   }
+
   updateDom(innerHTML: string){
     this.ele.innerHTML = innerHTML;
     this.previousContent = this.content;
   }
-
-
-
 }

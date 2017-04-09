@@ -4,8 +4,64 @@
 		"selected_items":
 		[
 			[
-				"con",
-				"console\tvar"
+				"pa",
+				"param\t@param"
+			],
+			[
+				"te",
+				"textLines"
+			],
+			[
+				"bor",
+				"border-left"
+			],
+			[
+				"border",
+				"border-bottom"
+			],
+			[
+				"moduel",
+				"moduleImports"
+			],
+			[
+				"lang",
+				"languages"
+			],
+			[
+				"trans",
+				"transition"
+			],
+			[
+				"show",
+				"showDeleted"
+			],
+			[
+				"mark",
+				"markdown"
+			],
+			[
+				"Pr",
+				"Promise"
+			],
+			[
+				"in",
+				"inputSplit"
+			],
+			[
+				"mar",
+				"markdown"
+			],
+			[
+				"or",
+				"originalText"
+			],
+			[
+				"last",
+				"lastItem"
+			],
+			[
+				"new",
+				"newHTML"
 			],
 			[
 				"patc",
@@ -20,16 +76,8 @@
 				"font-size"
 			],
 			[
-				"border",
-				"border"
-			],
-			[
 				"text",
 				"text-decoration"
-			],
-			[
-				"pa",
-				"padding"
 			],
 			[
 				"le",
@@ -50,10 +98,6 @@
 			[
 				"revisio",
 				"revision_id"
-			],
-			[
-				"new",
-				"newReturn"
 			],
 			[
 				"cate",
@@ -84,10 +128,6 @@
 				"orignalLines"
 			],
 			[
-				"mark",
-				"markdowninput"
-			],
-			[
 				"re",
 				"revisionCat"
 			],
@@ -96,16 +136,16 @@
 				"cursor"
 			],
 			[
+				"con",
+				"console"
+			],
+			[
 				"get",
 				"getCatDocs"
 			],
 			[
 				"rev",
 				"reviewText"
-			],
-			[
-				"trans",
-				"transform"
 			],
 			[
 				"art",
@@ -142,10 +182,6 @@
 			[
 				"ma",
 				"margin"
-			],
-			[
-				"Pr",
-				"toPromise"
 			],
 			[
 				"loca",
@@ -198,10 +234,6 @@
 			[
 				"logo",
 				"logout"
-			],
-			[
-				"mar",
-				"margin"
 			],
 			[
 				"col",
@@ -272,10 +304,6 @@
 				"savingDoc"
 			],
 			[
-				"bor",
-				"border-right"
-			],
-			[
 				"conf",
 				"ConfigService"
 			],
@@ -330,10 +358,6 @@
 			[
 				"over",
 				"overflow"
-			],
-			[
-				"te",
-				"text-decoration"
 			],
 			[
 				"marg",
@@ -456,10 +480,6 @@
 				"lightgrey"
 			],
 			[
-				"in",
-				"input"
-			],
-			[
 				"ligth",
 				"lighten"
 			],
@@ -494,57 +514,11 @@
 			[
 				"u",
 				"uppercase"
-			],
-			[
-				"b",
-				"bg\tbackground"
-			],
-			[
-				"for",
-				"forwards"
-			],
-			[
-				"bottom",
-				"bottom"
-			],
-			[
-				"an",
-				"animation-name"
-			],
-			[
-				"class",
-				"className"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "src/component/diff.component.ts",
-			"settings":
-			{
-				"buffer_size": 2291,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/service/realmark.service.ts",
-			"settings":
-			{
-				"buffer_size": 6550,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/component/previewer.component.ts",
-			"settings":
-			{
-				"buffer_size": 1012,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -553,10 +527,22 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 367.0,
-		"last_filter": "lint",
+		"height": 67.0,
+		"last_filter": "Package Control: install package",
 		"selected_items":
 		[
+			[
+				"Package Control: install package",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
 			[
 				"lint",
 				"CSSLint: Run CSSLint"
@@ -567,10 +553,6 @@
 			],
 			[
 				"inst",
-				"Package Control: Install Package"
-			],
-			[
-				"Package Control: ",
 				"Package Control: Install Package"
 			],
 			[
@@ -590,7 +572,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 449.0
+		"width": 467.0
 	},
 	"console":
 	{
@@ -611,52 +593,67 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/liammann/Documents/GitHub/ng2-realmark",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/src",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/src/component",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/src/service"
+		"/Users/liammann/Desktop/ng2-realmark",
+		"/Users/liammann/Desktop/ng2-realmark/src",
+		"/Users/liammann/Desktop/ng2-realmark/src/component",
+		"/Users/liammann/Desktop/ng2-realmark/tasks"
 	],
 	"file_history":
 	[
-		"/Users/liammann/Documents/GitHub/ng2-realmark/dist/readme.md",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/package.json",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/ng-realmark.ts",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/index.ts",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/.npmignore",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/dist/ng-realmark.js",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/package-dist.json",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/README.md",
-		"/Users/liammann/Documents/Test/readme.md",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/ng2-realmark.ts",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/dist/package.json",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/dist/ng-realmark.metadata.json",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/dist/package-dist.json",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/src/component/previewer.component.ts",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/src/component/diff.component.ts",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/.gitignore",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/src/service/realmark.service.ts",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/rollup.config.js",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/tsconfig.json",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/src/package-dist.json",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/ng-realmark.ngsummary.json",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/src/component/previewer.component.scss",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/src/component/diff.component.scss",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/ng-realmark.scss",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/src/service/lib/showdownPrism.ts",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/src/component/previewer.component.html",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/node_modules/rollup-plugin-inject/package.json",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/node_modules/rollup-plugin-inject/dist/rollup-plugin-inject.cjs.js",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/node_modules/rollup-plugin-inject/dist/rollup-plugin-inject.es6.js",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/index.ngsummary.json",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/dist/index.js",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/dist/ng2-realmark.d.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/component/diff.component.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/directive/realmark.directive.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/service/lib/showdownPrism-template.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/service/lib/showdownPrism.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/service/realmark.service.ts",
+		"/Users/liammann/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/Users/liammann/Desktop/ng2-realmark/ng-realmark.ts",
+		"/Users/liammann/Desktop/ng2-realmark/tsconfig.json",
+		"/Users/liammann/Desktop/ng2-realmark/ng-realmark.ngfactory.ts",
+		"/Users/liammann/Desktop/ng2-realmark/rollup.config.ts",
+		"/Users/liammann/Desktop/ng2-realmark/package.json",
+		"/Users/liammann/Desktop/ng2-realmark/src/style.scss",
+		"/Users/liammann/Desktop/ng2-realmark/dist/realmark.css",
+		"/Users/liammann/Desktop/ng2-realmark/.gitignore",
+		"/Users/liammann/Desktop/ng2-realmark/src/component/diff.component.scss",
+		"/Users/liammann/Desktop/ng2-realmark/src/service/realmark.service.d.ts",
+		"/Users/liammann/Desktop/ng2-realmark/tasks/buildPrismjs.js",
+		"/Users/liammann/Desktop/ng2-realmark/ng2-realmark.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/language-template.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/languages/powershell.directive.ts",
+		"/Users/liammann/Desktop/ng2-realmark/ng2-realmark-template.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/directive/lang.directive.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/languages/php.directive.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/languages/scala.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/languages/actionscript.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/languages/basic.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/languages/cpp.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/languages/diff.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/languages/apl.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/languages/clike.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/languages/dart.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/languages/haskell.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/languages/kotlin.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/languages/stylus.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/languages/rip.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/language-template.js",
+		"/Users/liammann/Desktop/ng2-realmark/src/component/previewer.component.ts",
+		"/Users/liammann/Desktop/ng2-realmark/tasks/prismjs-lang.js",
+		"/Users/liammann/Desktop/ng2-realmark/realmark.sublime-project",
+		"/Users/liammann/Desktop/ng2-realmark/src/style.css",
+		"/Users/liammann/Desktop/ng2-realmark/src/component/diff.component.d.ts",
+		"/Users/liammann/Desktop/ng2-realmark/src/component/previewer.component.html",
+		"/Users/liammann/Desktop/backup.js",
+		"/Users/liammann/Desktop/ng2-realmark/src/component/diff.component.html",
+		"/Users/liammann/Desktop/ng2-realmark/src/service/realmark.service.js",
+		"/Users/liammann/Desktop/ng2-realmark/node_modules/prismjs/prism.js",
+		"/Users/liammann/Desktop/ng2-realmark/node_modules/prismjs/components/prism-markdown.js",
+		"/Users/liammann/Desktop/ng2-realmark/node_modules/prismjs/bower.json",
+		"/Users/liammann/Desktop/ng2-realmark/node_modules/prismjs/components/prism-markdown.min.js",
+		"/Users/liammann/Desktop/ng2-realmark/node_modules/prismjs/examples.js",
 		"/Users/liammann/Desktop/ng2-realmark/ng2-realmark.js",
 		"/Users/liammann/Desktop/ng2-realmark/src/directive/realmark.directive.d.ts",
-		"/Users/liammann/Desktop/ng2-realmark/package.json",
 		"/Users/liammann/Desktop/ng2-realmark/ng2-realmark.d.ts",
 		"/Users/liammann/Desktop/ng2-realmark/.npmignore",
-		"/Users/liammann/Desktop/ng2-realmark/.gitignore",
-		"/Users/liammann/Desktop/ng2-realmark/ng2-realmark.ts",
 		"/Users/liammann/tomthing/PHPAPP/src/app/css/header.scss",
 		"/Users/liammann/tomthing/PHPAPP/src/app/css/doc-detail.scss",
 		"/Users/liammann/tomthing/PHPAPP/src/app/css/layout.scss",
@@ -730,26 +727,11 @@
 		"/Users/liammann/Dropbox/PHPInternalsSite/command history from server setup.txt",
 		"/Users/liammann/Desktop/moodleconsole/src/app/academy/academy-detail.component.html",
 		"/Users/liammann/Desktop/moodleconsole/src/app/admin.scss",
-		"/Users/liammann/Desktop/moodleconsole/src/app/services/user.service.ts",
-		"/Users/liammann/Desktop/moodleconsole/src/app/users/edit.component.ts",
-		"/Users/liammann/Desktop/moodleconsole/src/app/users/edit.component.html",
-		"/Users/liammann/Desktop/moodleconsole/package.json",
-		"/Users/liammann/Desktop/moodleconsole/README.md",
-		"/Users/liammann/Desktop/moodleconsole/src/app/users/users.component.html",
-		"/Users/liammann/Desktop/moodleconsole/src/app/users/users.component.ts",
-		"/Users/liammann/Desktop/moodleconsole/src/app/group/index.component.html",
-		"/Users/liammann/Desktop/moodleconsole/src/app/dashboard/index.component.html",
-		"/Users/liammann/studypilot/studypilot-server/models/user.js",
-		"/Users/liammann/studypilot/studypilot-server/package.json",
-		"/Users/liammann/studypilot/studypilot-server/controllers/academy.js",
-		"/Users/liammann/studypilot/studypilot-server/controllers/account.js",
-		"/Users/liammann/Desktop/moodleconsole/src/app/academy/academy-detail.component.ts",
-		"/Users/liammann/Desktop/moodleconsole/src/app/app.routing.ts",
-		"/Users/liammann/Desktop/moodleconsole/src/app/app.module.ts"
+		"/Users/liammann/Desktop/moodleconsole/src/app/services/user.service.ts"
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -784,6 +766,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"wrapSpan",
+			"php",
+			"RealMarkLangTypescript",
+			"this.code",
+			"compareoriginal",
+			"$u",
 			"save",
 			"h1",
 			"search",
@@ -905,13 +893,7 @@
 			"/assets/img/classroom.svg",
 			"user_id",
 			"newblock",
-			"newmodule",
-			"more",
-			"theme_more",
-			"theme_clean",
-			"./Coming Soon _ allwellandgood_files/",
-			"nav",
-			"tudor"
+			"newmodule"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -919,6 +901,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"wrapLine",
 			"color:rgb(255, 255, 255)",
 			";",
 			";\n",
@@ -1020,102 +1003,8 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/component/diff.component.ts",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2291,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2126,
-								2126
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true,
-							"use_tab_stops": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 280.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/service/realmark.service.ts",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6550,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4703,
-								4703
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true,
-							"use_tab_stops": false
-						},
-						"translation.x": 238.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/component/previewer.component.ts",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1012,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								307,
-								316
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true,
-							"use_tab_stops": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1154,10 +1043,6 @@
 	{
 		"height": 27.0
 	},
-	"output.doc":
-	{
-		"height": 0.0
-	},
 	"output.find_results":
 	{
 		"height": 0.0
@@ -1166,7 +1051,7 @@
 	"project": "realmark.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1208,7 +1093,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 383.0,
+	"side_bar_width": 285.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
