@@ -3,6 +3,7 @@ import * as Showdown from 'showdown';
 import 'rxjs/add/operator/toPromise';
 import {showdownPrism} from './lib/showdownPrism';
 
+import {ShowdownConfig} from '../config';
 
 
 
@@ -11,8 +12,11 @@ export class RealMarkService {
     
     // used to automatically wrap markdown with ```codeBlock/n  /n```
     private codeBlock: string; 
-    constructor() {}
-
+    private flavor: string; 
+ 
+    constructor(config: ShowdownConfig) {
+      if (config) { this.flavor = config.flavor; }
+    }
     /**
      * legacy entry point used for the directive
      */
@@ -35,6 +39,7 @@ export class RealMarkService {
     process(markdown: string): string {
       Showdown.extension('showdown-prism', showdownPrism);
       let converter = new Showdown.Converter({extensions: ['showdown-prism']});
+      converter.setFlavor(this.flavor);
       return converter.makeHtml(markdown);
     }
  
