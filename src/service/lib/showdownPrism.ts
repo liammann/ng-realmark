@@ -23,7 +23,7 @@ export function showdownPrism(){
             // ">                 : end of code tag
             // ([\s\S]*?)         : extract code (result[3])
             // </code></pre>      : end of code block
-            var regex = /<pre><code class="([a-z0-9]+) language\-(.*?)">([\s\S]*?)<\/code><\/pre>/g;
+            var regex = /<pre><code class="([a-zA-Z0-9]+) language\-(.*?)">([\s\S]*?)<\/code><\/pre>/g;
             
             var result;
             var html = text;
