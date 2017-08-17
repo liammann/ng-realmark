@@ -13,9 +13,13 @@ export class RealMarkService {
     // used to automatically wrap markdown with ```codeBlock/n  /n```
     private codeBlock: string; 
     private flavor: string; 
+    private headerLinks: boolean; 
  
     constructor(config: ShowdownConfig) {
-      if (config) { this.flavor = config.flavor; }
+      if (config) { 
+        this.flavor = config.flavor; 
+        this.headerLinks = config.headerLinks; 
+      }
     }
     /**
      * legacy entry point used for the directive
@@ -38,7 +42,23 @@ export class RealMarkService {
      */
     process(markdown: string): string {
       Showdown.extension('showdown-prism', showdownPrism);
-      let converter = new Showdown.Converter({extensions: ['showdown-prism']});
+      var extensions = ['showdown-prism']
+      if(this.headerLinks){
+      // Extension
+      Showdown.extension('header-anchors', function() {
+        // https://github.com/showdownjs/showdown/issues/344
+        var ancTpl = '$1<a id="user-content-$3" class="anchor" href="#$3" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>$4';
+
+        return [{
+          type: 'html',
+          regex: /(<h([1-3]) id="([^"]+?)">)(.*<\/h\2>)/g,
+          replace: ancTpl
+        }];
+      });
+      extensions.push('header-anchors');
+    }
+      let converter = new Showdown.Converter({extensions: extensions});
+
       converter.setFlavor(this.flavor);
       return converter.makeHtml(markdown);
     }
@@ -54,16 +74,11 @@ export class RealMarkService {
           console.error("undefined");
           return Promise.reject("Error");
         }
-        var s1Parts = content.split("\n");
-        var s2Parts = original.split("\n");
-        var showLog = false;
-
-        if(showLog){
-          // console.warn(s1Parts);
-          // console.warn(s2Parts);
-        }
-        var count = s2Parts.length > s1Parts.length ? s2Parts.length : s1Parts.length;
-        var j=0;
+        var s1Parts = content.split("\n"),
+         s2Parts = original.split("\n"),
+         showLog = false,
+         count = s2Parts.length > s1Parts.length ? s2Parts.length : s1Parts.length,
+         j=0;
 
         for(var i = 0; i<count;){
           if(showLog){console.warn(count, "=", s1Parts[i],i, "::", s2Parts[j], j);}
