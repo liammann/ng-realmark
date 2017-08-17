@@ -13,7 +13,7 @@ export class RealMarkService {
     // used to automatically wrap markdown with ```codeBlock/n  /n```
     private codeBlock: string; 
     private flavor: string; 
-    private headerLinks: boolean; 
+    private headerLinks: any; 
  
     constructor(config: ShowdownConfig) {
       if (config) { 

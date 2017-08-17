@@ -26,49 +26,52 @@ export function showdownPrism(){
                     var fresult = regex2.exec(results[i]);
 
                     // get the extracted language and code
-                    var language : any = fresult[1];
-                    var code : any     = fresult[3];
-                     // lower case the language so case does not matter
-                    language = language.toLowerCase();
+                    if(fresult && fresult[3]){
+                        var language : any = fresult[1];
+                        var code : any     = fresult[3];
 
-                    // decode HTML entities encoded by showdown
-                    // the opposite of replacements taken from showdown's _EncodeCode
-                    code = code.replace(/&lt;/g,"<");
-                    code = code.replace(/&gt;/g,">");
-                    code = code.replace(/&amp;/g,"&");
-                    
-                    // make sure to decode ampersands last otherwise you will double decode < and >
-                    // original      : &lt; makes the '<' symbol
-                    // encoded       : &amp;lt; makes the '&lt;' symbol
-                    //
-                    // Wrong:
-                    // replace &amp; : &lt; makes the '&lth;' symbol
-                    // replace &lt;  : < makes the < symbol
-                    //
-                    // Correct:
-                    // replace &lt;  : &amp;lt; makes the '<' symbol
-                    // replace &amp; : &lt; makes the '<' symbol
-                    
-                    // highlight the code with prism
-                    // get the grammar (language supported by prism)
-                    var grammar : any = Prism.languages[language];
+                         // lower case the language so case does not matter
+                        language = language.toLowerCase();
 
-                    if (!grammar) {
-                        // the given class name is not a language supported by prism
-                        // skip to the next code block
-                        console.log("NO PrismJS Language",Prism.languages);
-                        continue;
+                        // decode HTML entities encoded by showdown
+                        // the opposite of replacements taken from showdown's _EncodeCode
+                        code = code.replace(/&lt;/g,"<");
+                        code = code.replace(/&gt;/g,">");
+                        code = code.replace(/&amp;/g,"&");
+                        
+                        // make sure to decode ampersands last otherwise you will double decode < and >
+                        // original      : &lt; makes the '<' symbol
+                        // encoded       : &amp;lt; makes the '&lt;' symbol
+                        //
+                        // Wrong:
+                        // replace &amp; : &lt; makes the '&lth;' symbol
+                        // replace &lt;  : < makes the < symbol
+                        //
+                        // Correct:
+                        // replace &lt;  : &amp;lt; makes the '<' symbol
+                        // replace &amp; : &lt; makes the '<' symbol
+                        
+                        // highlight the code with prism
+                        // get the grammar (language supported by prism)
+                        var grammar : any = Prism.languages[language];
+
+                        if (!grammar) {
+                            // the given class name is not a language supported by prism
+                            // skip to the next code block
+                            console.log("NO PrismJS Language",Prism.languages);
+                            continue;
+                        }
+                        
+                        // do the highlighting
+                        var highlightedCode = Prism.highlight(code, grammar, language);
+
+                        // create the new HTML with the highlighted code and language class
+                        // Prism moves the language class from the <code> element to the <pre> element
+                        //  so we will set the class on the <pre> element
+                        var newHTML : String = '<pre class="language-' + language + '"><code class="language-' + language + '">' + highlightedCode + '</code></pre>';
+
+                        html = html.replace(fresult.input, newHTML);
                     }
-                    
-                    // do the highlighting
-                    var highlightedCode = Prism.highlight(code, grammar, language);
-
-                    // create the new HTML with the highlighted code and language class
-                    // Prism moves the language class from the <code> element to the <pre> element
-                    //  so we will set the class on the <pre> element
-                    var newHTML : String = '<pre class="language-' + language + '"><code class="language-' + language + '">' + highlightedCode + '</code></pre>';
-
-                    html = html.replace(fresult.input, newHTML);
                 }
             }
             return html;
