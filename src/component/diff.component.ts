@@ -9,11 +9,10 @@ import { RealMarkService } from '../service/realmark.service';
       <button *ngIf="!codeBlock" (click)="rawClick()">{{showRawText}}</button>
       <p><ng-content></ng-content></p>
     </header>
-    <div #contentWrapper></div>
+    <div [innerHTML]="output"></div>
   `
 })
 export class DiffComponent {
-  private ele: any;
   @Input() content: any; 
   @Input() original: any; 
   @Input() codeBlock: string; 
@@ -21,12 +20,12 @@ export class DiffComponent {
   showDeleted : boolean = true;
   showRaw : boolean = false;
   showDeletedText:string = "Hide Deleted";
-  showRawText:string = "Show Raw";
+  showRawText:string = "Show Markdown";
   previousContent: string;
 
-  @ViewChild('contentWrapper') contentWrapper: ElementRef;
+  output: string;
 
-  constructor(private elRef: ElementRef, private realMarkService: RealMarkService) {}
+  constructor( private realMarkService: RealMarkService) {}
 
   /**
    * Changes value of showDeleted and re-evaluate compateMarkdown. Also updates button text. 
@@ -60,7 +59,6 @@ export class DiffComponent {
    * set element to update and run compareMarkdown().  
    */
 	ngOnInit () {
-    this.ele = this.contentWrapper.nativeElement;
     this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted,this.showRaw, this.codeBlock).then(resp => this.updateDom(resp));
 	}
 
@@ -74,7 +72,7 @@ export class DiffComponent {
   }
 
   updateDom(innerHTML: string){
-    this.ele.innerHTML = innerHTML;
+    this.output = innerHTML;
     this.previousContent = this.content;
   }
 }

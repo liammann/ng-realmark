@@ -9,15 +9,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublish": "tsc",
-    "bundle": "node tasks/buildPrismjs.js",
     "transpile": "ngc",
     "copy": "cpx './package-dist.json' dist && renamer --find 'package-dist.json' --replace 'package.json' ./dist/*",
     "copyRead": "cpx './readme.md' dist",
     "package": "rollup -c && npm run copy && npm run copyRead",
     "minify": "uglifyjs dist/bundles/ng-realmark.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/ng-realmark.umd.min.js",
-    "build": "npm run transpile && npm run package && npm run minify && npm run build-css",
+    "build": "npm run transpile && npm run package && npm run minify && npm run buildCss",
     "publish": "cd ./dist && npm version $npm_package_config_update && npm publish",
-    "build-css": "node-sass src/style.scss dist/realmark.css"
+    "buildCss": "node-sass src/style.scss dist/realmark.css"
   },
   "repository": {
     "type": "git",

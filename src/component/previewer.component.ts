@@ -3,7 +3,7 @@ import { RealMarkService } from '../service/realmark.service';
 
 @Component({
   selector: 'realmark-previewer',
-  template: '',
+  template: '<div [innerHTML]="output"></div>',
   styles: [],
 })
 export class PreviewerComponent {
@@ -11,10 +11,9 @@ export class PreviewerComponent {
   @Input() content: any; 
   @Input() codeBlock: string; 
   previousHtml: string;
+  output: string;
 
-  constructor(private elRef: ElementRef, private realMarkService: RealMarkService) {
-    // reference to the DOM element
-    this.ele = this.elRef.nativeElement;
+  constructor(private realMarkService: RealMarkService) {
   }
 	ngOnInit () {
 	  this.updateDom(this.content);
@@ -32,7 +31,7 @@ export class PreviewerComponent {
     }
     // console.warn("UPDATING DOM", innerHTML);
 
-    this.ele.innerHTML = this.realMarkService.fromInput(inputMarkdown);
+    this.output =  this.realMarkService.fromInput(inputMarkdown);
     this.previousHtml = this.content;
   }
 }
