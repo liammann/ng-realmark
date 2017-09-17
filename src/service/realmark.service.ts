@@ -1,4 +1,4 @@
-import { Injectable }    from '@angular/core';
+import { Injectable, Sanitizer, SecurityContext }    from '@angular/core';
 import * as Showdown from 'showdown';
 import 'rxjs/add/operator/toPromise';
 import {showdownPrism} from './lib/showdownPrism';
@@ -15,7 +15,7 @@ export class RealMarkService {
     private flavor: string; 
     private headerLinks: any; 
  
-    constructor(config: ShowdownConfig) {
+    constructor(config: ShowdownConfig, private sanitizer: Sanitizer) {
       if (config) { 
         this.flavor = config.flavor; 
         this.headerLinks = config.headerLinks; 
@@ -152,17 +152,19 @@ export class RealMarkService {
     private wrapLine(type: string, text: string, line: number, preLine: number, raw: boolean): string{
       let num1 = line+1;
       let num2 = preLine+1;
-      
+      let sidebarNums = "<td class='diff-num1'>"+num1+"</td><td class='diff-num2'>"+num2+"</td>";
+
+      console.warn(text, this.sanitizer.sanitize(SecurityContext.HTML,this.markdownRegex(text)));
       if(!text){
-        return  "<div data-lineNum1='"+num1+"' data-lineNum2='"+num2+"'   class='diff-"+type+"'></div>";
+        return  "<tr class='diff-"+type+"'>"+sidebarNums+"<td></td></tr>";
       }
       if(!raw && !this.codeBlock){  // if line contains markdown which needs to be converted to html 
-        return  "<div data-lineNum1='"+num1+"' data-lineNum2='"+num2+"' class='diff-"+type+"'>"+this.markdownRegex(text)+" </div>";
+        return  "<tr class='diff-"+type+"'>"+sidebarNums+"<td>"+ this.sanitizer.sanitize(SecurityContext.HTML,this.markdownRegex(text))+"</td></tr>";
       }
       else if(this.codeBlock){  // automatically wrap in codeBlock
-        return  "<div data-lineNum1='"+num1+"' data-lineNum2='"+num2+"' class='diff-"+type+"'>"+this.process("```"+this.codeBlock+"\n"+text+"\n```")+"</div>";
+        return  "<tr class='diff-"+type+"'>"+sidebarNums+"<td>"+ this.sanitizer.sanitize(SecurityContext.HTML,this.process("```"+this.codeBlock+"\n"+text+"\n```"))+"</td></tr>";
       }
-      return  "<div data-lineNum1='"+num1+"' data-lineNum2='"+num2+"'   class='diff-"+type+"'>"+text+" </div>";
+      return  "<tr class='diff-"+type+"'>"+sidebarNums+"<td> "+this.sanitizer.sanitize(SecurityContext.HTML,text)+"</td> </tr>";
     }
 
     /**

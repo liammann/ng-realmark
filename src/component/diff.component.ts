@@ -9,7 +9,7 @@ import { RealMarkService } from '../service/realmark.service';
       <button *ngIf="!codeBlock" (click)="rawClick()">{{showRawText}}</button>
       <p><ng-content></ng-content></p>
     </header>
-    <div [innerHTML]="output"></div>
+    <table [innerHTML]="output"></table>
   `
 })
 export class DiffComponent {

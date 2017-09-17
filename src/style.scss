@@ -79,13 +79,7 @@ realmark-diff {
 	.diff-line {
 	    background: transparent;
 	}
-	.diff-deleted:after, .diff-added:before , .diff-line:before {
-	  content: attr(data-linenum1) ' ' attr(data-linenum2);
-	  position: absolute;
-	  left: 0;
-	  top: 0;
-	  bottom: 0;
-	  width: 0rem;
+	.diff-added .diff-num1, .diff-added .diff-num2, {
 	  text-align: center;
 	  color: white;
 	  border-right: 1px solid lightgrey;
@@ -96,11 +90,10 @@ realmark-diff {
 	  vertical-align: middle;
 	  background: rgba(240,141,141,0.75);
 	}
-	.diff-added:before {
+	.diff-added .diff-num1, .diff-added .diff-num2, {
 	  background: rgba(141, 240, 141, 0.75);
 	}
-
-	.diff-line:before {
+	.diff-line .diff-num1, .diff-line .diff-num2, {
 	  background: rgb(255,255,255);
 	}
 
