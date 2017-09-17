@@ -154,7 +154,6 @@ export class RealMarkService {
       let num2 = preLine+1;
       let sidebarNums = "<td class='diff-num1'>"+num1+"</td><td class='diff-num2'>"+num2+"</td>";
 
-      console.warn(text, this.sanitizer.sanitize(SecurityContext.HTML,this.markdownRegex(text)));
       if(!text){
         return  "<tr class='diff-"+type+"'>"+sidebarNums+"<td></td></tr>";
       }

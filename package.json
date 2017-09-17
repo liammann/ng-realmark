@@ -14,9 +14,9 @@
     "copyRead": "cpx './readme.md' dist",
     "package": "rollup -c && npm run copy && npm run copyRead",
     "minify": "uglifyjs dist/bundles/ng-realmark.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/ng-realmark.umd.min.js",
-    "build": "npm run transpile && npm run package && npm run minify && npm run buildCss",
-    "publish": "cd ./dist && npm version $npm_package_config_update && npm publish",
-    "buildCss": "node-sass src/style.scss dist/realmark.css"
+    "build": "npm run transpile && npm run package && npm run minify && npm run build:css",
+    "build:css": "node-sass src/style.scss dist/realmark.css",
+    "publish": "npm run build && cd ./dist && npm version $npm_package_config_update && npm publish"
   },
   "repository": {
     "type": "git",
