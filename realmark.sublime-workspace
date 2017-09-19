@@ -519,6 +519,15 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "src/style.scss",
+			"settings":
+			{
+				"buffer_size": 4155,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -593,13 +602,19 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/liammann/Desktop/ng2-realmark",
-		"/Users/liammann/Desktop/ng2-realmark/src",
-		"/Users/liammann/Desktop/ng2-realmark/src/component",
-		"/Users/liammann/Desktop/ng2-realmark/tasks"
+		"/Users/liammann/Documents/GitHub/ng2-realmark",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/dist",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/src",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/src/component",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/src/service"
 	],
 	"file_history":
 	[
+		"/Users/liammann/Documents/GitHub/ng2-realmark/src/component/diff.component.ts",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/src/style.scss",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/src/service/realmark.service.ts",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/package.json",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/dist/realmark.css",
 		"/Users/liammann/Desktop/ng2-realmark/src/component/diff.component.ts",
 		"/Users/liammann/Desktop/ng2-realmark/src/directive/realmark.directive.ts",
 		"/Users/liammann/Desktop/ng2-realmark/src/service/lib/showdownPrism-template.ts",
@@ -722,16 +737,11 @@
 		"/Users/liammann/tomthing/PHPAPP/src/app/pages/admin/user/user.component.spec.ts",
 		"/Users/liammann/tomthing/PHPAPP/src/index.html",
 		"/Users/liammann/tomthing/PHPAPP/src/config.json",
-		"/Users/liammann/tomthing/PHPAPP/package.json",
-		"/Users/liammann/tomthing/PHPAPP/src/main.ts",
-		"/Users/liammann/Dropbox/PHPInternalsSite/command history from server setup.txt",
-		"/Users/liammann/Desktop/moodleconsole/src/app/academy/academy-detail.component.html",
-		"/Users/liammann/Desktop/moodleconsole/src/app/admin.scss",
-		"/Users/liammann/Desktop/moodleconsole/src/app/services/user.service.ts"
+		"/Users/liammann/tomthing/PHPAPP/package.json"
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
@@ -766,6 +776,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"console",
 			"wrapSpan",
 			"php",
 			"RealMarkLangTypescript",
@@ -892,8 +903,7 @@
 			"'",
 			"/assets/img/classroom.svg",
 			"user_id",
-			"newblock",
-			"newmodule"
+			"newblock"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1003,8 +1013,37 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/style.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4155,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3952,
+								3952
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SCSS/SCSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1244.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -1043,6 +1082,10 @@
 	{
 		"height": 27.0
 	},
+	"output.doc":
+	{
+		"height": 0.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
@@ -1051,7 +1094,7 @@
 	"project": "realmark.sublime-project",
 	"replace":
 	{
-		"height": 64.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":

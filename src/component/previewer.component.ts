@@ -1,6 +1,6 @@
-import { Component, Input,Injectable,  OnInit, ElementRef } from '@angular/core';
+import { Component, Input,Injectable,  OnInit, ElementRef} from '@angular/core';
 import { RealMarkService } from '../service/realmark.service';
-
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'realmark-previewer',
   template: '<div [innerHTML]="output"></div>',
@@ -11,9 +11,9 @@ export class PreviewerComponent {
   @Input() content: any; 
   @Input() codeBlock: string; 
   previousHtml: string;
-  output: string;
+  output: any;
 
-  constructor(private realMarkService: RealMarkService) {
+  constructor(private realMarkService: RealMarkService, private sanitizer: DomSanitizer) {
   }
 	ngOnInit () {
 	  this.updateDom(this.content);
@@ -29,9 +29,8 @@ export class PreviewerComponent {
    	if(this.codeBlock){
       inputMarkdown = "```"+this.codeBlock+"\n"+inputMarkdown+"\n```";
     }
-    // console.warn("UPDATING DOM", innerHTML);
 
-    this.output =  this.realMarkService.fromInput(inputMarkdown);
+    this.output =  this.sanitizer.bypassSecurityTrustHtml(this.realMarkService.fromInput(inputMarkdown));
     this.previousHtml = this.content;
   }
 }
