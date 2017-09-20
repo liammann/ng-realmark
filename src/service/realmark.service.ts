@@ -14,7 +14,7 @@ export class RealMarkService {
     private codeBlock: string; 
     private flavor: string; 
     private headerLinks: any; 
-    private tableOfContents: [{value: string, link: string}]]; 
+    private tableOfContents: any; 
  
     constructor(config: ShowdownConfig, private sanitizer: Sanitizer) {
       if (config) { 
@@ -67,7 +67,7 @@ export class RealMarkService {
           let idName = match[3].replace(/<\/?[^>]+(>|$)/g, "").replace(/\s/g, '-').toLowerCase();
           let content = match[3].replace(/<\/?[^>]+(>|$)/g, "");
           let linkBtn = '<a class="anchor" href="' + currentURL + '#' + idName + '" aria-hidden="true">' + linkIcon + '</a>';
-          tableOfContents.push({value: content, link: "#"+idName});
+          tableOfContents.push({value: content, depth: match[2], link: idName});
           HTMLOutputFinal = HTMLOutputFinal.replace(match[0], match[1] + ' id=\"' + idName + '\">'+ linkBtn + match[3] + match[4]);
         }
       }

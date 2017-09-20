@@ -12,7 +12,7 @@ export class PreviewerComponent {
   @Input() codeBlock: string; 
   previousHtml: string;
   outputHTML: any;
-  @Output() toc = new EventEmitter();
+  @Output() toc = new EventEmitter(true);
 
   constructor(private realMarkService: RealMarkService, private sanitizer: DomSanitizer) {
   }
