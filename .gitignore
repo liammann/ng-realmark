@@ -44,3 +44,5 @@ Thumbs.db
 
 *.ngfactory.ts
 *.ngsummary.json
+
+*.sublime-workspace

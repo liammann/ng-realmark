@@ -1,9 +1,9 @@
-import { Component, Input,Injectable,  OnInit, ElementRef} from '@angular/core';
+import { Component, Input, Output, Injectable,  OnInit, ElementRef, EventEmitter} from '@angular/core';
 import { RealMarkService } from '../service/realmark.service';
 import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'realmark-previewer',
-  template: '<div [innerHTML]="output"></div>',
+  template: '<div [innerHTML]="outputHTML"></div>',
   styles: [],
 })
 export class PreviewerComponent {
@@ -11,7 +11,8 @@ export class PreviewerComponent {
   @Input() content: any; 
   @Input() codeBlock: string; 
   previousHtml: string;
-  output: any;
+  outputHTML: any;
+  @Output() toc = new EventEmitter();
 
   constructor(private realMarkService: RealMarkService, private sanitizer: DomSanitizer) {
   }
@@ -30,7 +31,8 @@ export class PreviewerComponent {
       inputMarkdown = "```"+this.codeBlock+"\n"+inputMarkdown+"\n```";
     }
 
-    this.output =  this.sanitizer.bypassSecurityTrustHtml(this.realMarkService.fromInput(inputMarkdown));
+    this.outputHTML =  this.sanitizer.bypassSecurityTrustHtml(this.realMarkService.fromInput(inputMarkdown));
+    this.toc.emit(this.realMarkService.getTableOfContents());
     this.previousHtml = this.content;
   }
 }
