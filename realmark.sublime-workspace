@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"co",
+				"console\tvar"
+			],
+			[
 				"pa",
 				"param\t@param"
 			],
@@ -296,10 +300,6 @@
 				"String"
 			],
 			[
-				"co",
-				"console"
-			],
-			[
 				"sav",
 				"savingDoc"
 			],
@@ -520,10 +520,10 @@
 	"buffers":
 	[
 		{
-			"file": "src/style.scss",
+			"file": "src/service/realmark.service.ts",
 			"settings":
 			{
-				"buffer_size": 4155,
+				"buffer_size": 9083,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -610,10 +610,13 @@
 	],
 	"file_history":
 	[
+		"/Users/liammann/Documents/GitHub/ng2-realmark/src/component/previewer.component.ts",
 		"/Users/liammann/Documents/GitHub/ng2-realmark/src/component/diff.component.ts",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/package.json",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/npm-debug.log",
+		"/Users/liammann/Documents/GitHub/ng2-realmark/src/component/previewer.component.ngfactory.ts",
 		"/Users/liammann/Documents/GitHub/ng2-realmark/src/style.scss",
 		"/Users/liammann/Documents/GitHub/ng2-realmark/src/service/realmark.service.ts",
-		"/Users/liammann/Documents/GitHub/ng2-realmark/package.json",
 		"/Users/liammann/Documents/GitHub/ng2-realmark/dist/realmark.css",
 		"/Users/liammann/Desktop/ng2-realmark/src/component/diff.component.ts",
 		"/Users/liammann/Desktop/ng2-realmark/src/directive/realmark.directive.ts",
@@ -734,14 +737,11 @@
 		"/Users/liammann/tomthing/PHPAPP/src/test.ts",
 		"/Users/liammann/tomthing/PHPAPP/karma.conf.js",
 		"/Users/liammann/tomthing/PHPAPP/src/app/app.component.spec.ts",
-		"/Users/liammann/tomthing/PHPAPP/src/app/pages/admin/user/user.component.spec.ts",
-		"/Users/liammann/tomthing/PHPAPP/src/index.html",
-		"/Users/liammann/tomthing/PHPAPP/src/config.json",
-		"/Users/liammann/tomthing/PHPAPP/package.json"
+		"/Users/liammann/tomthing/PHPAPP/src/app/pages/admin/user/user.component.spec.ts"
 	],
 	"find":
 	{
-		"height": 40.0
+		"height": 25.0
 	},
 	"find_in_files":
 	{
@@ -776,6 +776,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"\n",
 			"console",
 			"wrapSpan",
 			"php",
@@ -902,8 +903,7 @@
 			"{\"lat\":50.8458183,\"lng\":-1.0973211}",
 			"'",
 			"/assets/img/classroom.svg",
-			"user_id",
-			"newblock"
+			"user_id"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -911,6 +911,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"\\n",
 			"wrapLine",
 			"color:rgb(255, 255, 255)",
 			";",
@@ -1018,27 +1019,30 @@
 			[
 				{
 					"buffer": 0,
-					"file": "src/style.scss",
+					"file": "src/service/realmark.service.ts",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4155,
+						"buffer_size": 9083,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3952,
-								3952
+								1453,
+								1453
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/SCSS/SCSS.tmLanguage"
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"use_tab_stops": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 1244.0,
+						"translation.x": 32.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
