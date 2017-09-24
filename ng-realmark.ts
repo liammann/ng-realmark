@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import {
   ModuleWithProviders, NgModule,
-  Optional, SkipSelf }       from '@angular/core';
+  Optional, SkipSelf, Inject, InjectionToken }       from '@angular/core';
 
 
 import {RealMarkDirective} from './src/directive/realmark.directive';
@@ -20,6 +20,18 @@ export {DiffComponent} from './src/component/diff.component';
 import {ShowdownConfig} from './src/config';
 
 
+
+export const REALMARKMODULE_FORROOT_GUARD = new InjectionToken('REALMARKMODULE_FORROOT_GUARD');
+export function provideForRootGuard(realMarkModule: RealMarkModule): any {
+  if (realMarkModule) {
+    throw new Error(
+      `RealMarkModule.forRoot() called twice. Lazy loaded modules should use RealMarkModule.forChild() instead.`);
+  }
+
+  return 'guarded';
+}
+
+
 @NgModule({
   imports: [CommonModule],
   declarations: [RealMarkDirective, PreviewerComponent, DiffComponent],
@@ -27,18 +39,21 @@ import {ShowdownConfig} from './src/config';
   providers: [RealMarkService]
 })
 export class RealMarkModule {
-  constructor (@Optional() @SkipSelf() parentModule: RealMarkModule) {
-    if (parentModule) {
-      throw new Error(
-        'RealMarkModule is already loaded. Import it in the AppModule only');
-    }
-  }
+  constructor(@Optional() @Inject(REALMARKMODULE_FORROOT_GUARD) guard: any) {}
+
+
 	static forRoot(config: ShowdownConfig): ModuleWithProviders {
     return {
       ngModule: RealMarkModule,
       providers: [
         {provide: ShowdownConfig, useValue: config }
       ]
+    };
+  }
+ static forChild(): ModuleWithProviders {
+    return {
+      ngModule: RealMarkModule,
+      providers: []
     };
   }
 }

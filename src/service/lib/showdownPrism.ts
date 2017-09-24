@@ -8,6 +8,7 @@ import 'prismjs/components/prism-c';
 import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-markdown';
 import 'prismjs/components/prism-php';
+import 'prismjs/components/prism-diff';
 
 
 export function showdownPrism(){
