@@ -22,17 +22,17 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-var onp = require('./onp');
+import {onp} from './onp';
 
-function longestCommonSubsequence(file1, file2) {
-  var diff = new onp(file1, file2);
+function longestCommonSubsequence(file1:any, file2:any) {
+  var diff = onp(file1, file2);
   diff.compose();
   var ses = diff.getses();
 
-  var root;
-  var prev;
-  var file1RevIdx = file1.length - 1,
-      file2RevIdx = file2.length - 1;
+  var root:any;
+  var prev:any;
+  var file1RevIdx:any = file1.length - 1;
+  var file2RevIdx:any = file2.length - 1;
   for (var i = ses.length - 1; i >= 0; --i) {
       if (ses[i].t === diff.SES_COMMON) {
         if (prev) {
@@ -74,7 +74,7 @@ function longestCommonSubsequence(file1, file2) {
   return root;
 }
 
-function diffIndices(file1, file2) {
+function diffIndices(file1:any, file2:any) {
   // We apply the LCS to give a simple representation of the
   // offsets and lengths of mismatched chunks in the input
   // files. This is used by diff3_merge_indices below.
@@ -83,7 +83,7 @@ function diffIndices(file1, file2) {
   var tail1 = file1.length;
   var tail2 = file2.length;
 
-  for (var candidate = longestCommonSubsequence(file1, file2); candidate !== null; candidate = candidate.chain) {
+  for (var candidate:any = longestCommonSubsequence(file1, file2); candidate !== null; candidate = candidate.chain) {
     var mismatchLength1 = tail1 - candidate.file1index - 1;
     var mismatchLength2 = tail2 - candidate.file2index - 1;
     tail1 = candidate.file1index;
@@ -101,7 +101,7 @@ function diffIndices(file1, file2) {
   return result;
 }
 
-function diff3MergeIndices(a, o, b) {
+function diff3MergeIndices(a:any, o:any, b:any) {
   // Given three files, A, O, and B, where both A and B are
   // independently derived from O, returns a fairly complicated
   // internal representation of merge decisions it's taken. The
@@ -118,9 +118,9 @@ function diff3MergeIndices(a, o, b) {
   var m1 = diffIndices(o, a);
   var m2 = diffIndices(o, b);
 
-  var hunks = [];
+  var hunks:any = [];
 
-  function addHunk(h, side) {
+  function addHunk(h:any, side:any) {
     hunks.push([h.file1[0], side, h.file1[1], h.file2[0], h.file2[1]]);
   }
   for (i = 0; i < m1.length; i++) {
@@ -129,14 +129,14 @@ function diff3MergeIndices(a, o, b) {
   for (i = 0; i < m2.length; i++) {
     addHunk(m2[i], 2);
   }
-  hunks.sort(function(x, y) {
+  hunks.sort(function(x:any, y:any) {
     return x[0] - y[0]
   });
 
-  var result = [];
+  var result:any = [];
   var commonOffset = 0;
 
-  function copyCommon(targetOffset) {
+  function copyCommon(targetOffset:any) {
     if (targetOffset > commonOffset) {
       result.push([1, commonOffset, targetOffset - commonOffset]);
       commonOffset = targetOffset;
@@ -171,7 +171,7 @@ function diff3MergeIndices(a, o, b) {
       // do the same for the right; then, correct for skew
       // in the regions of o that each side changed, and
       // report appropriate spans for the three sides.
-      var regions = {
+      var regions:any = {
         0: [a.length, -1, o.length, -1],
         2: [b.length, -1, o.length, -1]
       };
@@ -205,18 +205,18 @@ function diff3MergeIndices(a, o, b) {
   return result;
 }
 
-export function diff3Merge(a, o, b) {
+export function diff3Merge(a:any, o:any, b:any) {
   // Applies the output of Diff.diff3_merge_indices to actually
   // construct the merged file; the returned result alternates
   // between "ok" and "conflict" blocks.
 
-  var result = [];
+  var result:any = [];
   var files = [a, o, b];
   var indices = diff3MergeIndices(a, o, b);
 
   var okLines = [];
 
-  function pushOk(xs) {
+  function pushOk(xs:any) {
     for (var j = 0; j < xs.length; j++) {
       // okLines.push(xs[j]);
       result.push({
@@ -226,7 +226,7 @@ export function diff3Merge(a, o, b) {
     }
   }
 
-  function isTrueConflict(rec) {
+  function isTrueConflict(rec:any) {
     if (rec[2] != rec[6]) return true;
     var aoff = rec[1];
     var boff = rec[5];

@@ -127,7 +127,7 @@ export class RealMarkService {
     /**
      * public function to compare each line one by one for changes. Return resolved promise
      */
-    compareMarkdown(content : string, compared: string, showDeleted?: boolean, raw?: boolean, codeBlock?: string): string | null{
+    compareMarkdown(content : string, compared: string, showDeleted: boolean, raw: boolean, codeBlock?: string): string | null{
       var showLog = false;
       let returnOut = [];
       // console.log("Called compareMarkdown()");
