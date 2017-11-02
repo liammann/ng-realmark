@@ -36,6 +36,7 @@
   "homepage": "https://github.com/liammann/ng-realmark#readme",
   "dependencies": {
     "@angular/core": "^4.4.2",
+    "@angular/forms": "^4.4.6",
     "@angular/platform-browser": "^4.4.2",
     "@types/diff": "^3.2.0",
     "diff": "^3.3.0",

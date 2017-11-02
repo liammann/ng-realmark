@@ -3,8 +3,10 @@ import * as Showdown from 'showdown';
 import 'rxjs/add/operator/toPromise';
 import {showdownPrism} from './lib/showdownPrism';
 
-import {ShowdownConfig} from '../config';
+import {ShowdownConfig, Revision} from '../config';
 
+import {diff3Merge} from './lib/diff3';
+    
 
 
 @Injectable()
@@ -78,68 +80,118 @@ export class RealMarkService {
       return HTMLOutputFinal;
     }
 
+
+
+    mergeMarkdown(
+      liveVersion: Revision,
+      originalVersion: Revision,
+      patchVersion: Revision
+      ): {content: string, conflicts: any}{
+      // console.log("Called mergeMarkdown()");
+
+        let result = diff3Merge(liveVersion.content.split("\n"), originalVersion.content.split("\n"), patchVersion.content.split("\n"));
+        var rtn = [], conflict;
+
+        for (var i = 0; i < result.length; i++) {
+          if(result[i].ok === undefined){
+            
+            // conflict[result[i].conflict.bIndex] = {
+            //       "a": result[i].conflict.a[0],
+            //       "o": result[i].conflict.o[0],
+            //       "b": result[i].conflict.b[0]
+            //     };
+            // if(result[i].conflict.b.length > 1){
+            //   for (var k = 1; k < result[i].conflict.b.length; k++) {
+            //     conflict[result[i].conflict.bIndex+k] = {
+            //       "a": result[i].conflict.a[k],
+            //       "o": result[i].conflict.o[k],
+            //       "b": result[i].conflict.b[k]
+            //     };
+            //   }
+            // }
+            rtn.push("|>>>>>>>>>>> PATCH: "+ patchVersion.revision + "\n" 
+              + result[i].conflict.b + "\n"  
+              + "===========" + "\n" 
+              + result[i].conflict.a + "\n" 
+              + "<<<<<<<<<<<< LIVE: "+ liveVersion.revision);
+
+          }else{
+            rtn.push(result[i].ok);
+
+          }
+        }
+         
+        return {content: [].concat.apply([], rtn).join('\n'), conflicts: conflict};
+    }
+
     /**
      * public function to compare each line one by one for changes. Return resolved promise
      */
-    compareMarkdown(content : string, original: string, showDeleted: boolean, raw: boolean, codeBlock: string ): Promise<any>{
+    compareMarkdown(content : string, compared: string, showDeleted?: boolean, raw?: boolean, codeBlock?: string): string | null{
+      var showLog = false;
       let returnOut = [];
-      this.codeBlock = codeBlock;
-      if(original !== content){
-        if(!content && !original){
+      // console.log("Called compareMarkdown()");
+   
+      this.codeBlock = codeBlock ? codeBlock : "";
+
+      var conflict = []
+      // if(compared !== content){
+        if(!content && !compared){
           console.error("undefined");
-          return Promise.reject("Error");
+          return null;
         }
-        var s1Parts = content.split("\n"),
-         s2Parts = original.split("\n"),
-         showLog = false,
-         count = s2Parts.length > s1Parts.length ? s2Parts.length : s1Parts.length,
-         j=0;
+        var s1Parts = content.split("\n"), s2Parts = compared.split("\n");
+
+        var count = s2Parts.length > s1Parts.length ? s2Parts.length : s1Parts.length,
+        j=0;
 
         for(var i = 0; i<count;){
           if(showLog){console.warn(count, "=", s1Parts[i],i, "::", s2Parts[j], j);}
+          
+          conflict[i] = null;
 
           if(s1Parts[i] === s2Parts[j]){
             if(s1Parts[i] !== undefined){
               if(showLog){console.log("KEEP", s1Parts[i]);}
-              returnOut.push(this.wrapLine("line", s1Parts[i], i, j, raw));
+              returnOut.push(this.wrapLine("line", s1Parts[i], i, j, raw, conflict[i]));
             }
             j++;
             i++;
           }else if((s1Parts[i] === s2Parts[j+1] || s1Parts[i+1] === s2Parts[j+2]) && s2Parts[j] !== undefined){
             if(showLog){console.log("DELETED", s2Parts[j]);}
             if(showDeleted){
-                returnOut.push(this.wrapLine("deleted", s2Parts[j], i, j, raw));
+                returnOut.push(this.wrapLine("deleted", s2Parts[j], i, j, raw, conflict[i]));
             }
             j++;
           }else if(s1Parts[i+1] === s2Parts[j+1] && s1Parts[i] !== undefined && s2Parts[j] !== undefined){
             if(showLog){console.log("REPLACED", s2Parts[j], "WITH", s1Parts[i] );}
             if(showDeleted){
-                returnOut.push(this.wrapLine("deleted", s2Parts[j], i, j, raw));
+                returnOut.push(this.wrapLine("deleted", s2Parts[j], i, j, raw, conflict[i]));
             }
-              returnOut.push(this.wrapLine("added", s1Parts[i], i, j, raw));
+              returnOut.push(this.wrapLine("added", s1Parts[i], i, j, raw, conflict[i]));
             j++;
             i++;
           }else if(s1Parts[i+1] === s2Parts[j] && s1Parts[i-1] === s2Parts[j-1] && s1Parts[i] !== undefined && s2Parts[j] !== undefined){
             if(showLog){console.log("INSERT BETWEEN", s2Parts[j], "AND", s2Parts[j-1] );}
-            returnOut.push(this.wrapLine("added", s1Parts[i], i, j, raw));
+            returnOut.push(this.wrapLine("added", s1Parts[i], i, j, raw, conflict[i]));
             i++;
           }else{
             // console.warn("COULDNT MATCH LINE");
             if(s2Parts[j] === undefined){
               if(showLog){console.log("COMPLETE NEW LINE", s1Parts[i] );}
-              returnOut.push(this.wrapLine("added", s1Parts[i], i, j, raw));
+              returnOut.push(this.wrapLine("added", s1Parts[i], i, j, raw, conflict[i]));
               j--;
             }else{
               if(s1Parts[i]!== undefined){
                 if(showLog){console.log("MOST LIKLEY REPLACED", s2Parts[j], "WITH", s1Parts[i] );}
                 if(showDeleted){
-                  returnOut.push(this.wrapLine("deleted", s2Parts[j], i, j, raw));
+                  returnOut.push(this.wrapLine("deleted", s2Parts[j], i, j, raw, conflict[i]));
                 }
-                returnOut.push(this.wrapLine("added", s1Parts[i], i, j, raw)); 
+                returnOut.push(this.wrapLine("added", s1Parts[i], i, j, raw, conflict[i]));
               }else{
                 if(showDeleted){
                   if(showLog){console.log("DELETED LOW", s1Parts[i], s1Parts[i+1], s2Parts[j]);}
-                  returnOut.push(this.wrapLine("deleted", s2Parts[j], i, j, raw));
+                  returnOut.push(this.wrapLine("deleted", s2Parts[j], i, j, raw, conflict[i]));
                 }
               }
             }
@@ -147,36 +199,37 @@ export class RealMarkService {
             i++;
           }
         }
-       return Promise.resolve(returnOut.join('\n'));
-      }else{
-        var textLines = [];
-        var s1Parts = content.split("\n");
-        for(var i = 0; i<s1Parts.length;){
-          textLines.push(this.wrapLine("line", s1Parts[i], i, i, raw));
-          i++;
-        }
-        return Promise.resolve(textLines.join('\n'));
-      }
+      // }
+
+      return returnOut.join('\n');
     }
 
     /**
      * returns each line as DIV, with data attributes for line numbers. DIV.innerHTML is either raw content, code highlighted or markdown converted to HTML
      */
-    private wrapLine(type: string, text: string, line: number, preLine: number, raw: boolean): string{
+    private wrapLine(type: string, text: string, line: number, preLine: number, raw: boolean, conflict: any): string{
       let num1 = line+1;
       let num2 = preLine+1;
       let sidebarNums = "<td class='diff-num1'>"+num1+"</td><td class='diff-num2'>"+num2+"</td>";
+      let infoDetails = "";
+
+      // if (conflict){
+      //   console.log("LINE CONFLICT", conflict.o)
+      //   type = type +" diff-conflict2";
+      //   infoDetails = "<td>C</td>";
+      // }
+
 
       if(!text){
-        return  "<tr class='diff-"+type+"'>"+sidebarNums+"<td></td></tr>";
+        return  "<tr class='diff-"+type+"'>"+sidebarNums+"<td width='100%'></td>"+infoDetails+"</tr>";
       }
       if(!raw && !this.codeBlock){  // if line contains markdown which needs to be converted to html 
-        return  "<tr class='diff-"+type+"'>"+sidebarNums+"<td>"+ this.sanitizer.sanitize(SecurityContext.HTML,this.markdownRegex(text))+"</td></tr>";
+        return  "<tr class='diff-"+type+"'>"+sidebarNums+"<td width='100%'>"+ this.sanitizer.sanitize(SecurityContext.HTML,this.markdownRegex(text))+"</td>"+infoDetails+"</tr>";
       }
       else if(this.codeBlock){  // automatically wrap in codeBlock
-        return  "<tr class='diff-"+type+"'>"+sidebarNums+"<td>"+ this.sanitizer.sanitize(SecurityContext.HTML,this.process("```"+this.codeBlock+"\n"+text+"\n```"))+"</td></tr>";
+        return  "<tr class='diff-"+type+"'>"+sidebarNums+"<td width='100%'>"+ this.sanitizer.sanitize(SecurityContext.HTML,this.process("```"+this.codeBlock+"\n"+text+"\n```"))+"</td>"+infoDetails+"</tr>";
       }
-      return  "<tr class='diff-"+type+"'>"+sidebarNums+"<td> "+this.sanitizer.sanitize(SecurityContext.HTML,text)+"</td> </tr>";
+      return  "<tr class='diff-"+type+"'>"+sidebarNums+"<td width='100%'> "+this.sanitizer.sanitize(SecurityContext.HTML,text)+"</td>"+infoDetails+"</tr>";
     }
 
     /**

@@ -1,23 +1,23 @@
 import { CommonModule } from '@angular/common';
-import {
-  ModuleWithProviders, NgModule,
-  Optional, SkipSelf, Inject, InjectionToken }       from '@angular/core';
+import { ModuleWithProviders, NgModule, Optional, SkipSelf, Inject, InjectionToken }       from '@angular/core';
+
+import { RealMarkDirective } from './src/directive/realmark.directive';
+import { RealMarkService } from './src/service/realmark.service';
+
+import { PreviewerComponent } from './src/component/previewer.component';
+import { DiffComponent } from './src/component/diff.component';
+import { Diff3Component } from './src/component/diff3.component';
 
 
-import {RealMarkDirective} from './src/directive/realmark.directive';
-import {RealMarkService} from './src/service/realmark.service';
+export { RealMarkService } from './src/service/realmark.service';
+export { RealMarkDirective }   from './src/directive/realmark.directive';
 
-import {PreviewerComponent} from './src/component/previewer.component';
-import {DiffComponent} from './src/component/diff.component';
+export { PreviewerComponent } from './src/component/previewer.component';
+export { DiffComponent } from './src/component/diff.component';
+export { Diff3Component } from './src/component/diff3.component';
 
-
-export {RealMarkService} from './src/service/realmark.service';
-export {RealMarkDirective}   from './src/directive/realmark.directive';
-
-export {PreviewerComponent} from './src/component/previewer.component';
-export {DiffComponent} from './src/component/diff.component';
-
-import {ShowdownConfig} from './src/config';
+import { ShowdownConfig } from './src/config';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -33,9 +33,9 @@ export function provideForRootGuard(realMarkModule: RealMarkModule): any {
 
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [RealMarkDirective, PreviewerComponent, DiffComponent],
-  exports: [RealMarkDirective, PreviewerComponent, DiffComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  declarations: [RealMarkDirective, PreviewerComponent, DiffComponent, Diff3Component],
+  exports: [RealMarkDirective, PreviewerComponent, DiffComponent, Diff3Component],
   providers: [RealMarkService]
 })
 export class RealMarkModule {

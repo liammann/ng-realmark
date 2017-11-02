@@ -38,7 +38,7 @@ export class DiffComponent {
       this.showDeleted = true;
       this.showDeletedText = "Hide Deleted";
     }
-    this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted, this.showRaw, this.codeBlock).then(resp => this.updateDom(resp));
+    this.updateDiff();
   }
 
   /**
@@ -52,27 +52,28 @@ export class DiffComponent {
       this.showRaw = true;
       this.showRawText = "Hide Markdown";
     }
-    this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted, this.showRaw, this.codeBlock).then(resp => this.updateDom(resp));
+    this.updateDiff();
   }
 
   /**
    * set element to update and run compareMarkdown().  
    */
-	ngOnInit () {
-    this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted,this.showRaw, this.codeBlock).then(resp => this.updateDom(resp));
-	}
+  ngOnInit () {
+    this.updateDiff();
+  }
 
   /**
    * set element to update and run compareMarkdown().  
    */
   ngDoCheck() {
     if(this.content !== this.previousContent){
-      this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted, this.showRaw, this.codeBlock).then(resp => this.updateDom(resp));
+      this.updateDiff();
     }
   }
 
-  updateDom(innerHTML: string){
-    this.output = innerHTML;
+  updateDiff(){
+    let html = this.realMarkService.compareMarkdown(this.content, this.original, this.showDeleted, this.showRaw, this.codeBlock)
+    this.output = html ? html : "";
     this.previousContent = this.content;
   }
 }
