@@ -83,9 +83,9 @@ export class RealMarkService {
 
 
     mergeMarkdown(
-      liveVersion: Revision,
+      patchVersion: Revision,
       originalVersion: Revision,
-      patchVersion: Revision
+      liveVersion: Revision
       ): {content: string, conflicts: any}{
       // console.log("Called mergeMarkdown()");
 
