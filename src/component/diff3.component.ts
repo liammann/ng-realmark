@@ -78,11 +78,11 @@ export class Diff3Component {
     let selected = $event.target.selectedOptions[0].value;
 
     if(selected === "live") {
-      this.compare = this.live.content;
+      this.compare = this.live ?  this.live.content : "";
     } else if(selected === "patch") {
-      this.compare = this.patch.content;
+      this.compare = this.patch ?  this.patch.content : "";
     } else {
-      this.compare = this.original.content;
+      this.compare = this.original ?  this.original.content : "";
     }
 
     this.updateDiff();
@@ -112,7 +112,7 @@ export class Diff3Component {
       this.live
     );
     this.editor = mergeMarkdown.content;
-    this.compare = this.original.content;
+    this.compare = this.original ?  this.original.content : "";
     this.updateDiff();
 
     this.editorControl.valueChanges

@@ -87,28 +87,28 @@ export class RealMarkService {
       originalVersion: Revision,
       liveVersion: Revision
       ): {content: string, conflicts: any}{
-      // console.log("Called mergeMarkdown()");
 
-        let result = diff3Merge(liveVersion.content.split("\n"), originalVersion.content.split("\n"), patchVersion.content.split("\n"));
+
+        var s1Parts:string[] = [""];
+        var s2Parts:string[] = [""];
+        var s3Parts:string[] = [""];
+        
+        if(liveVersion && liveVersion.content && liveVersion.content.split("\n")){
+          s1Parts = liveVersion.content.split("\n");
+        }
+        if(originalVersion && originalVersion.content && originalVersion.content.split("\n")){
+          s2Parts = originalVersion.content.split("\n");
+        }
+        if(patchVersion && patchVersion.content && patchVersion.content.split("\n")){
+          s3Parts = patchVersion.content.split("\n");
+        }
+
+        let result = diff3Merge(s1Parts, s2Parts, s3Parts);
         var rtn = [], conflict;
 
         for (var i = 0; i < result.length; i++) {
           if(result[i].ok === undefined){
             
-            // conflict[result[i].conflict.bIndex] = {
-            //       "a": result[i].conflict.a[0],
-            //       "o": result[i].conflict.o[0],
-            //       "b": result[i].conflict.b[0]
-            //     };
-            // if(result[i].conflict.b.length > 1){
-            //   for (var k = 1; k < result[i].conflict.b.length; k++) {
-            //     conflict[result[i].conflict.bIndex+k] = {
-            //       "a": result[i].conflict.a[k],
-            //       "o": result[i].conflict.o[k],
-            //       "b": result[i].conflict.b[k]
-            //     };
-            //   }
-            // }
             rtn.push("|>>>>>>>>>>> PATCH: "+ patchVersion.revision + "\n" 
               + result[i].conflict.b + "\n"  
               + "===========" + "\n" 
@@ -140,7 +140,15 @@ export class RealMarkService {
           console.error("undefined");
           return null;
         }
-        var s1Parts = content.split("\n"), s2Parts = compared.split("\n");
+        var s1Parts:string[] = [""];
+        var s2Parts:string[] = [""];
+        
+        if(content && content.split("\n")){
+          s1Parts = content.split("\n");
+        }
+        if(compared && compared.split("\n")){
+          s2Parts = compared.split("\n");
+        }
 
         var count = s2Parts.length > s1Parts.length ? s2Parts.length : s1Parts.length,
         j=0;
