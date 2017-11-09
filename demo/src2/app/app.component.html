@@ -1,0 +1,61 @@
+<h1>NG-RealMark</h1>
+
+	<h1>	&lt;realmark-diff3  [patch]="diff3input" [original]="diff3original" [live]="diff3live" (merged)="_merged($event)&gt;Input Name&lt;/realmark-diff3&gt;</h1>
+
+
+	<realmark-diff3  [patch]="diff3patch" [original]="diff3original" [live]="diff3live" (merged)="_merged($event)">Input Name</realmark-diff3>
+
+
+
+<section>
+
+	<h1> &lt;realmark-previewer [content]="markdown"   &gt;  &lt;/realmark-previewer&gt;</h1>
+	<realmark-previewer [content]="markdown"></realmark-previewer>
+
+	<div class="content">
+		<textarea name="input" [(ngModel)]="markdown" id="markdown" placeholder="input"></textarea>
+	</div>
+</section>
+
+<section>
+
+	<h1> &lt;realmark-previewer [content]="code" [codeBlock]="'js'" &gt;  &lt;/realmark-previewer&gt;</h1>
+	<realmark-previewer [content]="code" [codeBlock]="'js'"></realmark-previewer>
+
+	<div class="content">
+		<textarea name="input" [(ngModel)]="code" id="code" placeholder="input"></textarea>
+	</div>
+</section>
+
+<section>
+
+	<h1>	&lt;realmark-diff [content]="input" [original]="original"&gt;Input Name&lt;/realmark-diff&gt;</h1>
+
+	<realmark-diff [content]="input" [original]="original">Input Name</realmark-diff>
+
+	<div class="content">
+		<label for="input">New Content (updates in real-time)</label>
+		<textarea name="input" [(ngModel)]="input" id="input" placeholder="input"></textarea>
+
+		<label for="original">Original</label>	
+		<textarea name="input" [(ngModel)]="original" id="original" placeholder="input"></textarea>
+	</div>
+</section>
+
+
+
+<section>
+<h1>	&lt;realmark-diff [content]="input" [original]="original"[codeBlock]="'js'"&gt;CodeBlock Diff.js&lt;/realmark-diff&gt; </h1>
+
+	<realmark-diff [content]="code2" [original]="code1" [codeBlock]="'js'">CodeBlock Diff.js</realmark-diff>
+
+	<div class="content">
+		<label for="code2">New Content (updates in real-time)</label>
+		<textarea name="input" [(ngModel)]="code2" id="code2" placeholder="input"></textarea>
+
+		<label for="code1">Original</label>	
+		<textarea name="input" [(ngModel)]="code1" id="code1" placeholder="input"></textarea>
+	</div>
+</section>
+
+
