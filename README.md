@@ -1,10 +1,17 @@
 # NG-RealMark
-Real-time Markdown module for Angular.io. Code highlighting is provided by [Prismjs](http://prismjs.com/) and [ShowDown](https://github.com/showdownjs/showdown).
-
-> Live example [here](https://liammann.github.io/ng-realmark/)
+Real-time Markdown module for Angular.io.  
 
 [![dependencies Status](https://david-dm.org/liammann/ng-realmark/status.svg)](https://david-dm.org/liammann/ng-realmark)
 [![devDependencies Status](https://david-dm.org/liammann/ng-realmark/dev-status.svg)](https://david-dm.org/liammann/ng-realmark?type=dev)
+
+## Features
+- Markdown preview component,
+- Markdown diff component,
+- Markdown three way merge component,
+
+> Live example [here](https://liammann.github.io/ng-realmark/)
+
+
 
 
 

@@ -38,9 +38,7 @@ Thumbs.db
 *.map
 *.d.ts
 
-!/*.js
-!/docs/*.js
-!/docs/*.map
+/demo/dist
 
 *.ngfactory.ts
 *.ngsummary.json

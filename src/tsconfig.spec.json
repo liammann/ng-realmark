@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "declaration": true,
+        "stripInternal": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "strictNullChecks": true,
+        "noEmitOnError": true,
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "outDir": "../dist",
+        "sourceMap": true,
+        "inlineSources": true,
+        "target": "es5",
+        "lib": ["es2015", "dom"],
+        "paths": {
+            "ng-realmark": ["./ng-realmark"]
+        }
+    },
+    "include": [
+        "test.ts",
+        "**/*.ts"
+    ],
+    "angularCompilerOptions": {
+        "genDir": "../dist",
+        "skipTemplateCodegen": true,
+        "strictMetadataEmit": true
+    }
+}

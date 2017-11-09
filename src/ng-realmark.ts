@@ -1,22 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule, Optional, SkipSelf, Inject, InjectionToken }       from '@angular/core';
 
-import { RealMarkDirective } from './src/directive/realmark.directive';
-import { RealMarkService } from './src/service/realmark.service';
+import { RealMarkDirective } from './directive/realmark.directive';
+import { RealMarkService } from './service/realmark.service';
 
-import { PreviewerComponent } from './src/component/previewer.component';
-import { DiffComponent } from './src/component/diff.component';
-import { Diff3Component } from './src/component/diff3.component';
+import { PreviewerComponent } from './component/previewer.component';
+import { DiffComponent } from './component/diff.component';
+import { Diff3Component } from './component/diff3.component';
 
 
-export { RealMarkService } from './src/service/realmark.service';
-export { RealMarkDirective }   from './src/directive/realmark.directive';
+export { RealMarkService } from './service/realmark.service';
+export { RealMarkDirective }   from './directive/realmark.directive';
 
-export { PreviewerComponent } from './src/component/previewer.component';
-export { DiffComponent } from './src/component/diff.component';
-export { Diff3Component } from './src/component/diff3.component';
+export { PreviewerComponent } from './component/previewer.component';
+export { DiffComponent } from './component/diff.component';
+export { Diff3Component } from './component/diff3.component';
 
-import { ShowdownConfig } from './src/config';
+import { ShowdownConfig } from './config';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
