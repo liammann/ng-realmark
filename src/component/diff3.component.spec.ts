@@ -2,7 +2,7 @@ import { Component, OnInit, DebugElement, ViewChild } from "@angular/core";
 import { ComponentFixture, TestBed, async } from "@angular/core/testing";
 import { By } from "@angular/platform-browser";
 
-import { RealMarkModule, Diff3Component } from "../public";
+import { RealMarkModule, Diff3Component } from "../ng-realmark";
 
 
 
@@ -48,12 +48,7 @@ describe("Diff3", () => {
         diffElement = fixture.debugElement.query(By.css("realmark-diff3"));
         diff3 = diffElement.componentInstance;
     });
-    function sendInput(inputElement: any, text: string) {
-        inputElement.value = text;
-        inputElement.dispatchEvent(new Event('input'));
-        fixture.detectChanges();
-        return fixture.whenStable();
-    }
+
     it("should be created with default values", done => {
         expect(comp).toBeTruthy();
         expect(diff3).toBeTruthy();

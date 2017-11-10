@@ -6,6 +6,7 @@ import * as Prism from 'prismjs';
 
 import 'prismjs/components/prism-c';
 import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-markdown';
 import 'prismjs/components/prism-php';
 import 'prismjs/components/prism-diff';

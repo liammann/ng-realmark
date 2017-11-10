@@ -213,7 +213,7 @@ export class RealMarkService {
     }
 
     /**
-     * returns each line as DIV, with data attributes for line numbers. DIV.innerHTML is either raw content, code highlighted or markdown converted to HTML
+     * returns each line as DIV, with line numbers. DIV.innerHTML is either raw content, code highlighted or markdown converted to HTML
      */
     private wrapLine(type: string, text: string, line: number, preLine: number, raw: boolean, conflict: any): string{
       let num1 = line+1;
@@ -241,7 +241,7 @@ export class RealMarkService {
     }
 
     /**
-     * all convert the following markdown tokens to HTML. Return the raw text if no RegExp matches.
+     * Convert the following markdown tokens to HTML. Return the raw text if no RegExp matches.
      */
     private markdownRegex(text: string): any{
       if(!text){ // return straight away if text is undefined

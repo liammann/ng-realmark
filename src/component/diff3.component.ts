@@ -50,7 +50,7 @@ export class Diff3Component {
   showDeleted : boolean = false;
   showDeletedText: string = "Show Deleted";
   showRaw : boolean = true;
-  showRawText: string = "Hide Markdown";
+  showRawText: string = "Show Markdown";
 
   editorControl = new FormControl();
 
