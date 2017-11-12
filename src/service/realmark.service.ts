@@ -108,11 +108,11 @@ export class RealMarkService {
 
         for (var i = 0; i < result.length; i++) {
           if(result[i].ok === undefined){
-            
+
             rtn.push("|>>>>>>>>>>> PATCH: "+ patchVersion.revision + "\n" 
-              + result[i].conflict.b + "\n"  
+              + result[i].conflict.b.join("\n") + "\n"  
               + "===========" + "\n" 
-              + result[i].conflict.a + "\n" 
+              + result[i].conflict.a.join("\n") + "\n" 
               + "<<<<<<<<<<<< LIVE: "+ liveVersion.revision);
 
           }else{
@@ -120,8 +120,8 @@ export class RealMarkService {
 
           }
         }
-         
-        return {content: [].concat.apply([], rtn).join('\n'), conflicts: conflict};
+
+        return {content: rtn.join('\n'), conflicts: conflict};
     }
 
     /**
