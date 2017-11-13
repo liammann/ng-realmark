@@ -1,6 +1,6 @@
 {
   "name": "ng-realmark",
-  "version": "0.0.0",
+  "version": "3.11.0",
   "description": "Real-time Markdown W/ Markdown three way merge",
   "main": "bundles/ng-realmark.umd.js",
   "module": "ng-realmark.js",

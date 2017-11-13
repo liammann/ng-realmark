@@ -5,6 +5,7 @@ import { RealMarkDirective } from './directive/realmark.directive';
 import { RealMarkService } from './service/realmark.service';
 
 import { PreviewerComponent } from './component/previewer.component';
+import { PreviewerStaticComponent } from './component/previewer-static.component';
 import { DiffComponent } from './component/diff.component';
 import { Diff3Component } from './component/diff3.component';
 
@@ -13,6 +14,7 @@ export { RealMarkService } from './service/realmark.service';
 export { RealMarkDirective }   from './directive/realmark.directive';
 
 export { PreviewerComponent } from './component/previewer.component';
+export { PreviewerStaticComponent } from './component/previewer-static.component';
 export { DiffComponent } from './component/diff.component';
 export { Diff3Component } from './component/diff3.component';
 
@@ -34,8 +36,8 @@ export function provideForRootGuard(realMarkModule: RealMarkModule): any {
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
-  declarations: [RealMarkDirective, PreviewerComponent, DiffComponent, Diff3Component],
-  exports: [RealMarkDirective, PreviewerComponent, DiffComponent, Diff3Component],
+  declarations: [RealMarkDirective, PreviewerComponent, PreviewerStaticComponent, DiffComponent, Diff3Component],
+  exports: [RealMarkDirective, PreviewerComponent, PreviewerStaticComponent, DiffComponent, Diff3Component],
   providers: [RealMarkService]
 })
 export class RealMarkModule {
