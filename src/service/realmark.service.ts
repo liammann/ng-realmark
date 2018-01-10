@@ -65,15 +65,22 @@ export class RealMarkService {
         if (typeof(window) !== 'undefined') {
           currentURL = window.location.href.split('#')[0]; // remove current hash 
         }
-
+        var checkNumber: any = {};
         let regex = new RegExp(/(<h([1-5]))>(.+?)(?=\<\/h\2>)(<\/h\2>)/, 'g');
         var match;
         while ((match = regex.exec(HTMLOutput)) != null) {
           let idName = match[3].replace(/<\/?[^>]+(>|$)/g, "").replace(/\s/g, '-').toLowerCase();
           let content = match[3].replace(/<\/?[^>]+(>|$)/g, "");
+          let tableOfContentsCheck = tableOfContents.map(v => v.link);
+          if (tableOfContentsCheck.indexOf(idName) !== -1){
+            checkNumber[idName] !== undefined ? checkNumber[idName] = checkNumber[idName] + 1 : checkNumber[idName] = 2;
+            idName += "-"+checkNumber[idName];
+          }
+
           let linkBtn = '<a class="anchor" href="' + currentURL + '#' + idName + '" aria-hidden="true">' + linkIcon + '</a>';
           tableOfContents.push({value: content, depth: match[2], link: idName});
           HTMLOutputFinal = HTMLOutputFinal.replace(match[0], match[1] + ' id=\"' + idName + '\">'+ linkBtn + match[3] + match[4]);
+
         }
       }
       this.tableOfContents = tableOfContents;

@@ -25,7 +25,7 @@ export class DiffComponent {
 
   output: string;
 
-  constructor( private realMarkService: RealMarkService) {}
+  constructor(private realMarkService: RealMarkService) {}
 
   /**
    * Changes value of showDeleted and re-evaluate compateMarkdown. Also updates button text. 
@@ -56,14 +56,14 @@ export class DiffComponent {
   }
 
   /**
-   * set element to update and run compareMarkdown().  
+   * set element to update and run updateDiff().  
    */
   ngOnInit () {
     this.updateDiff();
   }
 
   /**
-   * set element to update and run compareMarkdown().  
+   * set element to update and run updateDiff().  
    */
   ngDoCheck() {
     if(this.content !== this.previousContent){
