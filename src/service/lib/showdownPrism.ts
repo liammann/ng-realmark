@@ -3,18 +3,16 @@
 // Uses the Prism syntax highlighter to highlight code blocks.
 
 import * as Prism from 'prismjs';
-
+import 'prismjs/components/prism-markup-templating';
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-c';
-import 'prismjs/components/prism-css';
-import 'prismjs/components/prism-json';
-import 'prismjs/components/prism-markdown';
-import 'prismjs/components/prism-php';
 import 'prismjs/components/prism-diff';
-
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-php';
 
 export function showdownPrism(){
     'use strict';
-
     return {
         type: 'html',
         filter: function (text : any, converter : any, options : any) {
@@ -40,7 +38,7 @@ export function showdownPrism(){
                         code = code.replace(/&lt;/g,"<");
                         code = code.replace(/&gt;/g,">");
                         code = code.replace(/&amp;/g,"&");
-                        
+
                         // make sure to decode ampersands last otherwise you will double decode < and >
                         // original      : &lt; makes the '<' symbol
                         // encoded       : &amp;lt; makes the '&lt;' symbol
@@ -52,7 +50,7 @@ export function showdownPrism(){
                         // Correct:
                         // replace &lt;  : &amp;lt; makes the '<' symbol
                         // replace &amp; : &lt; makes the '<' symbol
-                        
+
                         // highlight the code with prism
                         // get the grammar (language supported by prism)
                         var grammar : any = Prism.languages[language];
@@ -60,10 +58,10 @@ export function showdownPrism(){
                         if (!grammar) {
                             // the given class name is not a language supported by prism
                             // skip to the next code block
-                            console.log("NO PrismJS Language",Prism.languages);
+                            console.log("NO PrismJS Language: ", language ,Prism.languages);
                             continue;
                         }
-                        
+
                         // do the highlighting
                         var highlightedCode = Prism.highlight(code, grammar, language);
 
