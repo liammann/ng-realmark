@@ -8,6 +8,14 @@ import {ShowdownConfig, Revision} from '../config';
 import {diff3Merge} from './lib/diff3';
 
 
+export class ComparedLine {
+  type: string;
+  text: string;
+  originalLine: number;
+  newLine: number;
+  format: string;
+}
+
 @Injectable()
 export class RealMarkService {
 
@@ -42,19 +50,18 @@ export class RealMarkService {
       return this.tableOfContents;
     }
     /**
-     * main function of class. converts markdown to html with showdown.
+     * main function of class, converts markdown to html with showdown.
      */
     process(markdown: string): string {
       Showdown.extension('showdown-prism', showdownPrism);
-      var extensions = ['showdown-prism']
+      var extensions = ['showdown-prism'];
 
       let converter = new Showdown.Converter({extensions: extensions});
-
       converter.setFlavor(this.flavor);
 
       let unsafe = converter.makeHtml(markdown);
 
-      let HTMLOutput : string = ""+this.sanitizer.sanitize(SecurityContext.HTML, unsafe);
+      let HTMLOutput : string = "" + this.sanitizer.sanitize(SecurityContext.HTML, unsafe);
       let HTMLOutputFinal = HTMLOutput;
       let tableOfContents = [];
 
@@ -73,7 +80,7 @@ export class RealMarkService {
           let tableOfContentsCheck = tableOfContents.map(v => v.link);
           if (tableOfContentsCheck.indexOf(idName) !== -1){
             checkNumber[idName] !== undefined ? checkNumber[idName] = checkNumber[idName] + 1 : checkNumber[idName] = 2;
-            idName += "-"+checkNumber[idName];
+            idName += "-" + checkNumber[idName];
           }
 
           let linkBtn = '<a class="anchor" href="' + currentURL + '#' + idName + '" aria-hidden="true">' + linkIcon + '</a>';
@@ -89,12 +96,7 @@ export class RealMarkService {
 
 
 
-    mergeMarkdown(
-      patchVersion: Revision,
-      originalVersion: Revision,
-      liveVersion: Revision
-      ): {content: string, conflicts: any}{
-
+    mergeMarkdown( patchVersion: Revision, originalVersion: Revision, liveVersion: Revision ) : {content: string, conflicts: any } {
 
         var s1Parts:string[] = [""];
         var s2Parts:string[] = [""];
@@ -134,9 +136,9 @@ export class RealMarkService {
     /**
      * public function to compare each line one by one for changes. Return resolved promise
      */
-    compareMarkdown(content : string, compared: string, showDeleted: boolean, raw: boolean, codeBlock?: string): string | null{
+    compareMarkdown(content : string, compared: string, showDeleted: boolean, raw: boolean, codeBlock?: string): ComparedLine[] {
       var showLog = false;
-      let returnOut = [];
+      let returnOut: ComparedLine[] = [];
       // console.log("Called compareMarkdown()");
 
       this.codeBlock = codeBlock ? codeBlock : "";
@@ -144,8 +146,7 @@ export class RealMarkService {
       var conflict = []
       // if(compared !== content){
         if(!content && !compared){
-          console.error("undefined");
-          return null;
+          return [];
         }
         var s1Parts:string[] = [""];
         var s2Parts:string[] = [""];
@@ -163,50 +164,48 @@ export class RealMarkService {
         for(var i = 0; i<count;){
           if(showLog){console.warn(count, "=", s1Parts[i],i, "::", s2Parts[j], j);}
 
-          conflict[i] = null;
-
           if(s1Parts[i] === s2Parts[j]){
             if(s1Parts[i] !== undefined){
               if(showLog){console.log("KEEP", s1Parts[i]);}
-              returnOut.push(this.wrapLine("line", s1Parts[i], i, j, raw, conflict[i]));
+              returnOut.push(this.buildReturnLine("line", s1Parts[i], i, j, raw));
             }
             j++;
             i++;
           }else if((s1Parts[i] === s2Parts[j+1] || s1Parts[i+1] === s2Parts[j+2]) && s2Parts[j] !== undefined){
             if(showLog){console.log("DELETED", s2Parts[j]);}
             if(showDeleted){
-                returnOut.push(this.wrapLine("deleted", s2Parts[j], i, j, raw, conflict[i]));
+                returnOut.push(this.buildReturnLine("deleted", s2Parts[j], i, j, raw));
             }
             j++;
           }else if(s1Parts[i+1] === s2Parts[j+1] && s1Parts[i] !== undefined && s2Parts[j] !== undefined){
             if(showLog){console.log("REPLACED", s2Parts[j], "WITH", s1Parts[i] );}
             if(showDeleted){
-                returnOut.push(this.wrapLine("deleted", s2Parts[j], i, j, raw, conflict[i]));
+                returnOut.push(this.buildReturnLine("deleted", s2Parts[j], i, j, raw));
             }
-              returnOut.push(this.wrapLine("added", s1Parts[i], i, j, raw, conflict[i]));
+            returnOut.push(this.buildReturnLine("added", s1Parts[i], i, j, raw));
             j++;
             i++;
           }else if(s1Parts[i+1] === s2Parts[j] && s1Parts[i-1] === s2Parts[j-1] && s1Parts[i] !== undefined && s2Parts[j] !== undefined){
             if(showLog){console.log("INSERT BETWEEN", s2Parts[j], "AND", s2Parts[j-1] );}
-            returnOut.push(this.wrapLine("added", s1Parts[i], i, j, raw, conflict[i]));
+            returnOut.push(this.buildReturnLine("added", s1Parts[i], i, j, raw));
             i++;
           }else{
             // console.warn("COULDNT MATCH LINE");
             if(s2Parts[j] === undefined){
               if(showLog){console.log("COMPLETE NEW LINE", s1Parts[i] );}
-              returnOut.push(this.wrapLine("added", s1Parts[i], i, j, raw, conflict[i]));
+              returnOut.push(this.buildReturnLine("added", s1Parts[i], i, j, raw));
               j--;
             }else{
               if(s1Parts[i]!== undefined){
-                if(showLog){console.log("MOST LIKLEY REPLACED", s2Parts[j], "WITH", s1Parts[i] );}
+                if(showLog){console.log("MOST LIKLEY REPLACED", s2Parts[j], "WITH", s1Parts[i]);}
                 if(showDeleted){
-                  returnOut.push(this.wrapLine("deleted", s2Parts[j], i, j, raw, conflict[i]));
+                  returnOut.push(this.buildReturnLine("deleted", s2Parts[j], i, j, raw));
                 }
-                returnOut.push(this.wrapLine("added", s1Parts[i], i, j, raw, conflict[i]));
+                returnOut.push(this.buildReturnLine("added", s1Parts[i], i, j, raw));
               }else{
                 if(showDeleted){
                   if(showLog){console.log("DELETED LOW", s1Parts[i], s1Parts[i+1], s2Parts[j]);}
-                  returnOut.push(this.wrapLine("deleted", s2Parts[j], i, j, raw, conflict[i]));
+                  returnOut.push(this.buildReturnLine("deleted", s2Parts[j], i, j, raw));
                 }
               }
             }
@@ -216,69 +215,19 @@ export class RealMarkService {
         }
       // }
 
-      return returnOut.join('\n');
+      return returnOut;
     }
 
     /**
-     * returns each line as DIV, with line numbers. DIV.innerHTML is either raw content, code highlighted or markdown converted to HTML
+     * builds return object for each line
      */
-    private wrapLine(type: string, text: string, line: number, preLine: number, raw: boolean, conflict: any): string{
-      let num1 = line+1;
-      let num2 = preLine+1;
-      let sidebarNums = "<td class='diff-num1'>"+num1+"</td><td class='diff-num2'>"+num2+"</td>";
-      let infoDetails = "";
-
-      // if (conflict){
-      //   console.log("LINE CONFLICT", conflict.o)
-      //   type = type +" diff-conflict2";
-      //   infoDetails = "<td>C</td>";
-      // }
-
-
-      if(!text){
-        return  "<tr class='diff-"+type+"'>"+sidebarNums+"<td width='100%'></td>"+infoDetails+"</tr>";
-      }
-      if(!raw && !this.codeBlock){  // if line contains markdown which needs to be converted to html
-        return  "<tr class='diff-"+type+"'>"+sidebarNums+"<td width='100%'>"+ this.sanitizer.sanitize(SecurityContext.HTML,this.markdownRegex(text))+"</td>"+infoDetails+"</tr>";
-      }
-      else if(this.codeBlock){  // automatically wrap in codeBlock
-        return  "<tr class='diff-"+type+"'>"+sidebarNums+"<td width='100%'>"+ this.sanitizer.sanitize(SecurityContext.HTML,this.process("```"+this.codeBlock+"\n"+text+"\n```"))+"</td>"+infoDetails+"</tr>";
-      }
-      return  "<tr class='diff-"+type+"'>"+sidebarNums+"<td width='100%'> "+this.sanitizer.sanitize(SecurityContext.HTML,text)+"</td>"+infoDetails+"</tr>";
+    private buildReturnLine(type: string, text: string, originalLine: number, newLine: number, raw: boolean): ComparedLine {
+      return {
+        "type": type,
+        "text": text,
+        "originalLine": originalLine+1,
+        "newLine": newLine+1,
+        "format": this.codeBlock ? "code" : raw ? "text" : "markdown"
+      };
     }
-
-    /**
-     * Convert the following markdown tokens to HTML. Return the raw text if no RegExp matches.
-     */
-    private markdownRegex(text: string): any{
-      if(!text){ // return straight away if text is undefined
-        return "";
-      }
-      var regExpressions : RegExp[] = [
-        new RegExp(/(#+\s?)(.*)/, 'i'),                   // headers
-        new RegExp(/\[([^\[]+)\]\(([^\)]+)\)/, 'i'),      // links
-        new RegExp(/(\*\*|__)(.*?)\1/, 'i'),              // bold
-        new RegExp(/(\*|_)(.*?)\1/, 'i'),                 // emphasis
-        new RegExp(/\~\~(.*?)\~\~/, 'i'),                 // del
-        new RegExp(/\:\"(.*?)\"\:/, 'i'),                 // quote
-        new RegExp(/`(.*?)`/, 'i'),                       // inline code
-        new RegExp(/(\-+\s)(.*)/, 'i'),                   // ul lists
-        new RegExp(/[0-9]+\.(.*)/, 'i'),                  // ol lists
-        new RegExp(/(&gt;|\>)(.*)/, 'i'),                 // blockquotes
-      ];
-      // var  regHelpText = ["header", "bold", "emphasis", "del", "quote", "inline code", "ul lists", "ol lists", "blockquotes", "horizontal rule", "add paragraphs", "fix extra ul", "fix extra ol", "fix extra blockquote"];
-      var typeResult = null;
-      for (var i = 0; i < regExpressions.length; ) {
-         var typeMatch = regExpressions[i];
-          typeResult = typeMatch.exec(text);
-          if(typeResult){
-            // return "["+regHelpText[i]+"] "+this.process(text);
-            return this.process(text);
-          }else{
-            i++;
-          }
-      }
-      return text;
-    }
-
 }
