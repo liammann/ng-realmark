@@ -17,8 +17,8 @@ import 'rxjs/add/operator/distinctUntilChanged';
     <header>
       <p><ng-content></ng-content></p>
       <button (click)="deletedClick()">{{showDeletedText}}</button>
-      <button *ngIf="!codeBlock" (click)="rawClick()">{{showRawText}}</button>
-      <div>Compare: 
+      <button *ngIf="!codeBlock" (click)="markdownClick()">{{showMarkdownText}}</button>
+      <div>Compare:
         <select (change)="changeCompare($event)">
           <option value="original">Original</option>
           <option value="live">Live</option>
@@ -26,84 +26,75 @@ import 'rxjs/add/operator/distinctUntilChanged';
         </select>
       </div>
     </header>
-    <div class="diff-content">  
-
-    <textarea name="input" [(ngModel)]="editor" id="editor" [formControl]="editorControl" ></textarea>
-    <table [innerHTML]="output"></table>
+    <div class="diff-content">
+      <textarea name="input" [(ngModel)]="editor" id="editor" [formControl]="editorControl" ></textarea>
+      <realmark-diff [content]="_content" [original]="_compare" [showDeleted]="_showDeleted" [showMarkdown]="_showMarkdown"></realmark-diff>
     </div>
   `
 })
 export class Diff3Component {
-  @Input() patch: Revision; 
-  @Input() original: Revision; 
-  @Input() live: Revision; 
-  
+  @Input() patch: Revision;
+  @Input() original: Revision;
+  @Input() live: Revision;
+
   editor: string;
 
-  @Input() codeBlock: string; 
+  @Input() codeBlock: string;
   @Output() merged: EventEmitter<any> = new EventEmitter();
- 
-  compare: string;
-  previousContent: string;
-  output: string;
 
-  showDeleted : boolean = false;
+  _compare: string;
+  _content: string;
+
+  _showDeleted : boolean = false;
   showDeletedText: string = "Show Deleted";
-  showRaw : boolean = true;
-  showRawText: string = "Show Markdown";
+  _showMarkdown : boolean = false;
+  showMarkdownText: string = "Hide Markdown";
 
   editorControl = new FormControl();
 
   constructor( private realMarkService: RealMarkService) {}
 
   /**
-   * Changes value of showDeleted and re-evaluate compateMarkdown. Also updates button text. 
+   * Changes value of showDeleted and re-evaluate compateMarkdown. Also updates button text.
    */
   deletedClick (){
-    if(this.showDeleted){
-      this.showDeleted = false;
+    if(this._showDeleted){
+      this._showDeleted = false;
       this.showDeletedText = "Show Deleted";
     }else{
-      this.showDeleted = true;
+      this._showDeleted = true;
       this.showDeletedText = "Hide Deleted";
     }
-    this.updateDiff();
-
   }
-
   /**
-   * Changes value of showDeleted and re-evaluate compateMarkdown. Also updates button text. 
+   * Changes value of showMarkdown and re-evaluate compateMarkdown. Also updates button text.
+   */
+  markdownClick (){
+    if(this._showMarkdown){
+      this._showMarkdown = false;
+      this.showMarkdownText = "Hide Markdown";
+    }else{
+      this._showMarkdown = true;
+      this.showMarkdownText = "Show Markdown";
+    }
+  }
+  /**
+   * Compare selection update, change this.compare and re-evaluate compateMarkdown.
    */
   changeCompare($event: any){
     let selected = $event.target.selectedOptions[0].value;
 
     if(selected === "live") {
-      this.compare = this.live ?  this.live.content : "";
+      this._compare = this.live ?  this.live.content : "";
     } else if(selected === "patch") {
-      this.compare = this.patch ?  this.patch.content : "";
+      this._compare = this.patch ?  this.patch.content : "";
     } else {
-      this.compare = this.original ?  this.original.content : "";
+      this._compare = this.original ?  this.original.content : "";
     }
-
-    this.updateDiff();
   }
-  /**
-   * Changes value of showRaw and re-evaluate compateMarkdown. Also updates button text. 
-   */
-  rawClick (){
-    if(this.showRaw){
-      this.showRaw = false;
-      this.showRawText = "Show Markdown";
-    }else{
-      this.showRaw = true;
-      this.showRawText = "Hide Markdown";
-    }
-    this.updateDiff();
-  }
-  
 
   /**
-   * set element to update and run compareMarkdown().  
+   * set element to update and run compareMarkdown().
    */
 	ngOnInit () {
     let mergeMarkdown = this.realMarkService.mergeMarkdown(
@@ -111,26 +102,21 @@ export class Diff3Component {
       this.original,
       this.live
     );
+    this._content = mergeMarkdown.content;
     this.editor = mergeMarkdown.content;
-    this.compare = this.original ?  this.original.content : "";
-    this.updateDiff();
+    this._compare = this.original ?  this.original.content : "";
 
+    // only update diff table on right after 1 second of no changes
     this.editorControl.valueChanges
-      .debounceTime(500)
+      .debounceTime(1000)
       .distinctUntilChanged()
       .subscribe((newValue) => {
-          this.editor = newValue;    
-          this.updateDiff();
-          this.merged.emit(this.editor);
+          this._content = newValue;
+          this.merged.emit(this._content);
 
       }, (err: Error) => {
           console.log(err);
-      });  
+      });
   }
 
-  updateDiff(){
-    let html = this.realMarkService.compareMarkdown(this.editor, this.compare, this.showDeleted, this.showRaw, this.codeBlock)
-    this.output = html ? html : "";
-    this.previousContent = this.editor;
-  }
 }

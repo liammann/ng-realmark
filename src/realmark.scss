@@ -204,7 +204,7 @@ realmark-diff3 {
 	    	color: black;
 	    }
 	}
-	header p {
+	> header p {
 	    font-size: 1.4em;
 	    padding: 0.65rem 0.75rem 0.5rem 0.75rem;
 	    margin:0;
@@ -212,6 +212,9 @@ realmark-diff3 {
 	    color: rgb(65, 131, 196);
 	}
 
+  realmark-diff header p {
+    padding: 0;
+  }
 
 
 
