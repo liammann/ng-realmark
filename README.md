@@ -1,5 +1,5 @@
 # NG-RealMark
-Real-time Markdown module for Angular.io.  
+Real-time Markdown module for Angular.io. [View NPM page](https://www.npmjs.com/package/ng-realmark)
 
 [![dependencies Status](https://david-dm.org/liammann/ng-realmark/status.svg)](https://david-dm.org/liammann/ng-realmark)
 [![devDependencies Status](https://david-dm.org/liammann/ng-realmark/dev-status.svg)](https://david-dm.org/liammann/ng-realmark?type=dev)
@@ -15,13 +15,13 @@ Real-time Markdown module for Angular.io.
 
 
 
-## Install (Angular CLI project) 
+## Install (Angular CLI project)
 Step 1: Add module to project through npm `npm install ng-realmark --save`
 
 Step 2: Reference in main NgModule
 ```
 import {RealMarkModule} from "ng-realmark/ng-realmark";
- 
+
 @NgModule({
   imports: [ …
     RealMarkModule.forRoot({flavor: 'github'}), // or original or vanilla
@@ -29,7 +29,7 @@ import {RealMarkModule} from "ng-realmark/ng-realmark";
 	]…
 ```
 Step 3: Add stylesheet to `angular.cli`
-``` 
+```
 "styles": [
   ...
 	"../node_modules/ng-realmark/realmark.css"
@@ -37,12 +37,12 @@ Step 3: Add stylesheet to `angular.cli`
 ],
 ```
 
-## Usage 
+## Usage
 ### Component 1 - Previewer
 ```
 <realmark-previewer [content]="markdownContentVar" > </realmark-previewer>
 ```
-Automatic code block wrapping can be achieve be adding the `[codeBlock]=“‘js’”` attribute. E.g. 
+Automatic code block wrapping can be achieve be adding the `[codeBlock]=“‘js’”` attribute. E.g.
 ```
 <realmark-previewer [content]="codeContentVar" [codeBlock]="'js'" > </realmark-previewer>
 ```
@@ -54,7 +54,7 @@ Automatic code block wrapping can be achieve be adding the `[codeBlock]=“‘js
 	Title to be displayed
 </realmark-diff>
 ```
-Automatic code block wrapping can be achieve be adding the `[codeBlock]=“‘js’”` attribute. E.g. 
+Automatic code block wrapping can be achieve be adding the `[codeBlock]=“‘js’”` attribute. E.g.
 ```
 <realmark-diff [content]="CodeNewContent" [original]="CodeOriginalContent" [codeBlock]="'js'" >
 	Title to be displayed
